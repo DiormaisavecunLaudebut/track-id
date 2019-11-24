@@ -2,3 +2,10 @@
 @import "alert";
 @import "avatar";
 @import "navbar";
+@import "post-item";
+@import "icons";
+@import "home-page";
+
+.container {background: white;}
+.ts {font-weight:bold; color: white;}
+.column {flex-direction: column}

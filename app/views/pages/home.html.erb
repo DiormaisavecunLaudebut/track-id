@@ -1,2 +1,23 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="home-page">
+  <div class="d-flex justify-content-between">
+    <div class="ml-2 mt-3 d-flex column justify-content-center align-items-center">
+      <%= cl_image_tag 'icon-library', width: 22, height: 22 %>
+      <p  style="font-size: 12px"  class="ts mt-1">Library</p>
+    </div>
+    <div class="justify-content-center align-items-center d-flex">
+      <i style="opacity: 0.6" class="fas fa-circle mr-1"></i>
+      <i class="fas fa-circle mr-1"></i>
+      <i style="opacity: 0.6" class="fas fa-circle"></i>
+    </div>
+    <div class="mr-2 mt-3 d-flex column justify-content-center align-items-center">
+      <i class="fas fa-compass ts"></i>
+      <p style="font-size: 12px" class="ts mt-1">Discover</p>
+    </div>
+  </div>
+  <div class="home-center d-flex align-items-center justify-content-center">
+    <p class="ts">Tap to Shazam</p>
+    <%= cl_image_tag 'shazam-main-icon', width: 150, height: 150 %>
+    <div class="mt-3 photo-icon"><i class="fas fa-camera"></i></div>
+  </div>
+
+</div>
