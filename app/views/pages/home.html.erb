@@ -1,19 +1,26 @@
 <div class="home-page">
   <div class="d-flex justify-content-between">
-    <div class="ml-2 mt-3 d-flex column justify-content-center align-items-center">
-      <%= cl_image_tag 'icon-library', width: 22, height: 22 %>
-      <p  style="font-size: 12px"  class="ts mt-1">Library</p>
-    </div>
-    <div class="justify-content-center align-items-center d-flex">
+    <%= link_to library_path do %>
+      <div class="ml-2 mt-3 d-flex column justify-content-center align-items-center">
+        <%= cl_image_tag 'icon-library', width: 22, height: 22 %>
+        <p  style="font-size: 12px"  class="ts mt-1">Library</p>
+      </div>
+    <% end %>
+
+    <div class="justify-content-around align-items-center d-flex">
       <i style="opacity: 0.6" class="fas fa-circle mr-1"></i>
       <i class="fas fa-circle mr-1"></i>
       <i style="opacity: 0.6" class="fas fa-circle"></i>
     </div>
-    <div class="mr-2 mt-3 d-flex column justify-content-center align-items-center">
-      <i class="fas fa-compass ts"></i>
-      <p style="font-size: 12px" class="ts mt-1">Discover</p>
-    </div>
+
+    <%= link_to discover_path do  %>
+      <div class="mr-2 mt-3 d-flex column justify-content-center align-items-center">
+        <i class="fas fa-compass ts"></i>
+        <p style="font-size: 12px" class="ts mt-1">Discover</p>
+      </div>
+    <% end %>
   </div>
+
   <div class="home-center d-flex align-items-center justify-content-center">
     <p class="ts">Tap to Shazam</p>
     <%= cl_image_tag 'shazam-main-icon', width: 150, height: 150 %>

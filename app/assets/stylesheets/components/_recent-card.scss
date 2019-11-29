@@ -1,0 +1,50 @@
+.recent-card {
+  width: 45%;
+  height: 230px;
+  border-radius: 8px;
+  background: white;
+  position: relative;
+  box-shadow: 0px 0px 2px $sgray;
+  margin-bottom: 16px;
+}
+
+.top-img {
+  height: 60%;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.recent-dots {
+  height: 33px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding-top: 12px;
+}
+
+div.recent-dots * {
+  text-shadow: 0px 0px 7px black;
+}
+.flex-container {
+  flex-flow: wrap;
+  justify-content: space-around;
+  display: flex;
+}
+.recent-artist {
+  h4 {
+    font-size: 16px;
+    margin-bottom: 0px;
+    margin-left: 6px;
+    margin-top: 6px;
+    text-stroke: thin;
+  }
+  p {
+    color: #8a8a8a;
+    font-size: 12px;
+    margin-left: 6px;
+    font-weight: 300;
+  }
+}

@@ -1,0 +1,39 @@
+.play-bar {
+  margin-top: 280px;
+}
+
+.play-circle {
+  width: 50px;
+  height: 50px;
+  background-color: #E00040;
+  border-radius: 50%;
+}
+
+.sound-wave {
+  width: 5px;
+  min-height: 5px !important;
+  background: rgba(220,220,220, 0.4);
+  border-radius: 50%;
+  border-radius: 10px;
+  transition: height 0.1s ease-out;
+}
+
+.wave-container {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.discover-live {
+  color:#E00040 ;
+  margin:0 0 0 8px;
+ border-left: 1px solid darkgray;
+ padding-left: 8px;
+ font-weight: bold;
+}
+
+.stream-music {
+  color: #a9a9a9;
+  font-weight: 300;
+}

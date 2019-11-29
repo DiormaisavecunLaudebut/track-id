@@ -1,0 +1,31 @@
+<body style="background-color: white"></body>
+<div class="my-2 mx-2">
+  <div class="d-flex align-items-center justify-content-between mb-4 mt-3">
+
+    <div><%= cl_image_tag "settings-logo", width: 30, height: 30 %></div>
+
+    <div>
+      <p style="font-weight: bold; margin-bottom: 0">Library</p>
+      <div class="justify-content-center align-items-center d-flex">
+        <i style="color: rgb(16, 123, 151);" class="fas fa-circle mr-1"></i>
+        <i style="color: rgb(210, 210, 210)"class="fas fa-circle mr-1"></i>
+        <i style="color: rgb(210, 210, 210)"class="fas fa-circle"></i>
+      </div>
+    </div>
+
+    <div style="width: 30px;"></div>
+
+  </div>
+
+  <%= render "menu-list" %>
+
+  <h4 class="pb-2 border-bottom" style="font-weight: bold; font-size: 18px;margin-top: 24px;">Recent Shazam</h4>
+  <div class="flex-container mt-3">
+    <% 12.times do |index| %>
+        <%= render "recent-card", index: index %>
+    <% end %>
+  </div>
+  <%= link_to nothing_path do %>
+    <div class="see-nothing"><h4>SEE NOTHING</h4></div>
+  <% end %>
+</div>

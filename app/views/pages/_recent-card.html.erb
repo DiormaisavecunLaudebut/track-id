@@ -1,0 +1,25 @@
+<% image = "https://res.cloudinary.com/dlodtvkez/image/upload/v1574948584/recent#{index + 1}.jpg" %>
+<% recent = [
+  ["Face cachée", "The masked"], ["Brol", "Angèle"], ["Houses of the Holy", "Led Zeppelin"],
+   ["The Strokes", "Is This It"], ["Sunset Dreaming", "Lorraine Sherman "], ["Piano Sonata in B Minor", "Ta soeur"],
+   ["Raven Yr Own World", "Bass Clef"], ["Flower Smell", "Florian la fleur"], ["The End", "Simeon"],
+  ["Tutu", "Miles Davis"],["Never Mind", "Nirvana"], ["This is Hardcore", "Pulp"]
+] %>
+
+<div class="recent-card">
+  <div class="top-img" style="background-image: url(<%= image %>)">
+    <div class="recent-dots">
+      <i style="font-size: 5px;" class="fas fa-circle mr-1"></i>
+      <i style="font-size: 5px;" class="fas fa-circle mr-1"></i>
+      <i style="font-size: 5px;" class="fas fa-circle mr-1"></i>
+    </div>
+  </div>
+  <div class="recent-artist">
+    <h4><%= recent[index][0] %></h4>
+    <p><%= recent[index][1] %></p>
+  </div>
+  <div class="spotify-icon d-flex justify-content-center align-items-center">
+    <%= cl_image_tag 'spotify-icon', height: 12, width: 12 %>
+    <p style="margin: 0 0 0 4px;font-weight: bold; color: white; font-size: 8px;">Spotify</p>
+  </div>
+</div>

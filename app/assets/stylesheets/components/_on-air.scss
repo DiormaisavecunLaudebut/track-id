@@ -1,0 +1,27 @@
+.on-air-container {
+  width: 100%;
+  height: 150px;
+  border-radius: 8px;
+  background: rgba(220, 220, 220, 0.1)
+}
+
+.on-air-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(220, 220, 220, 0.1);
+  margin-bottom: 12px;
+}
+
+.cory-on-air {
+  background-position: center;
+  background-size: cover;
+  width: 100px;
+  height: 80px;
+  border-radius: 6px;
+}
+
+div.on-air-details * {
+  margin-bottom: 0;
+}

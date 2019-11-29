@@ -1,0 +1,85 @@
+<body style="background: black; overflow-x: hidden;"></body>
+
+<div class="mx-2 my-2 mt-3">
+
+  <%= render "rectangles-background" %>
+
+  <div class="d-flex align-items-center justify-content-between mb-4">
+
+    <div style="width: 60px;"></div>
+
+    <div>
+      <p class="ts" style="margin:0;">Discover</p>
+      <div class="justify-content-center align-items-center d-flex">
+        <i style="color: rgb(180, 180, 180);" class="fas fa-circle mr-1"></i>
+        <i style="color: rgb(180, 180, 180)"class="fas fa-circle mr-1"></i>
+        <i style="color: white"class="fas fa-circle"></i>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center" style="width: 60px;">
+      <%= cl_image_tag 'arrow-growing', height: 20, width: 20 %>
+      <%= cl_image_tag 'loupe', height: 20, width: 20 %>
+    </div>
+
+  </div>
+
+  <div class="d-flex align-items-center justify-content-center play-bar">
+    <div class="wave-container">
+      <% 22.times do |i|%>
+        <div data-position='<%= "#{i + 1}" %>' class="sound-wave"></div>
+      <% end %>
+    </div>
+    <div class="play-circle d-flex justify-content-center align-items-center">
+      <i class="fas fa-play ts"></i>
+    </div>
+    <div class="wave-container">
+      <% 22.times do |i|%>
+        <div data-position='<%= "#{22 - i}" %>' class="sound-wave"></div>
+      <% end %>
+    </div>
+  </div>
+
+  <div style="width: 100%" class="d-flex align-items-center justify-content-center mt-3">
+    <div class="d-flex align-items-center">
+      <%= cl_image_tag "play-note", height: 20, width: 20 %>
+      <p class="ts" style="font-size: 22px;margin:0;">1</p>
+    </div>
+    <p class="discover-live">LIVE</p>
+  </div>
+
+  <h4 style="margin-bottom: 2px;"class="ts text-center mt-1">Beats 1 Radio</h4>
+  <h6 class="stream-music text-center">Stream music 24 hours a day. Absolutely free.</h6>
+
+  <div class="on-air-container mt-3">
+    <div class="py-3 px-3">
+      <div class="on-air-top">
+        <div class="d-flex align-items-center">
+          <%= cl_image_tag "on-air", height: 20, width: 20 %>
+          <p class="ml-1" style="color:#E00040;margin: 0;font-size: 14px;">ON AIR</p>
+        </div>
+        <div class="d-flex align-items-center">
+          <p class="ts font-weight-normal" style="margin: 0;font-size: 14px;">UP NEXT</p>
+          <i style="font-size: 12px;"class="fas fa-chevron-right ml-1"></i>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="cory-on-air mr-3" style="background-image: url('https://res.cloudinary.com/dlodtvkez/image/upload/v1575062878/cory-on-air.jpg')">
+        </div>
+        <div class="on-air-details">
+          <p style="color: rgba(220,220,220,0.7);font-size: 12px;">21:00 - 00:00</p>
+          <p style="font-size: 14px;"class="ts">Cory Henry</p>
+          <p style="color: rgba(220,220,220,0.7);font-size: 12px;">The groove at the heart of Paris' vibrant music scene.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-container mt-3">
+    <% 16.times do |index| %>
+        <%= render "discover-card", index: index %>
+    <% end %>
+  </div>
+
+</div>
+
