@@ -1,0 +1,13 @@
+.opacity-filter {
+  width: 100%;
+  position: absolute;
+  background: black;
+  opacity: 0.5;
+  z-index: 15;
+}
+.post-comments {
+  width: 100%;
+  position: absolute;
+  z-index: 30;
+  background: orange;
+}
