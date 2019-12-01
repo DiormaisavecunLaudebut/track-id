@@ -10,7 +10,7 @@ const conversations = document.querySelectorAll('.comments-click');
 displayPostViews()
 posts.forEach(post => post.addEventListener('click', playExtract))
 conversations.forEach(conv => conv.addEventListener('click', openConversation))
-//setInterval(moveWaves, 20);
+setInterval(moveWaves, 20);
 
 
 // navigator.mediaDevices.getUserMedia({ audio: true })
