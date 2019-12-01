@@ -1,6 +1,14 @@
-<div class="container">
-  <% @posts.each do |post| %>
-    <%= render 'post_item', post: post %>
+<body style="background:white;"></body>
+<div class="d-flex align-items-center justify-content-between track-banner">
+  <%= link_to library_path do %>
+    <%= cl_image_tag 'arrow_left', height: 18, width: 22, class: "ml-3" %>
   <% end %>
+  <h4 style="font-weight: bold; font-size: 16px;margin:0;">Track ID</h4>
+  <div style="width: 24px"></div>
 </div>
+<div style="width:100%; height:1px; background: rgba(220,220,220,1)"></div>
+
+<% @posts.each do |post| %>
+  <%= render 'post_item', post: post %>
+<% end %>
 

@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'library', to: 'pages#library', as: :library
   get 'discover', to: 'pages#discover', as: :discover
   get 'nothing', to: 'pages#nothing', as: :nothing
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get 'tracks', to: 'posts#index', as: :tracks
 
+  get 'tracks', to: 'posts#index', as: :tracks
+  resources :posts, only: [] do
+    post 'create_view', to: 'posts#create_view', as: :create_view
+  end
 end

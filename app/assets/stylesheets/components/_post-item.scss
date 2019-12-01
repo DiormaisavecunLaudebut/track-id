@@ -1,9 +1,8 @@
 .post-item {
-  width: 100%;
+  position: relative;
   height: 90px;
   align-items: center;
-  border-bottom: 1px solid darkgrey;
-  margin-bottom: 5px;
+  border-bottom: 1px solid $sgray;
 }
 .post-item-details {
   width: 80%;
@@ -13,7 +12,7 @@
 }
 
 .post-item-play {
-  font-size: 14px;
+  font-size: 12px;
 }
 .post-item-title {
   font-size: 14px;
@@ -21,4 +20,34 @@
 
 .fa-ellipsis-h {
   color: #999999;
+}
+
+.post-view {
+  margin-left: 8px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.post-username {
+  font-weight: 300;
+}
+
+.post-item-title {
+  color: rgb(93, 93, 93);
+  font-size: 12px;
+}
+
+.post-dots {
+  color: rgb(93, 93, 93);
+}
+
+.playing {
+  background: #f7f7f7;
+}
+.play-click {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 50px;
+  left: 70px;
 }

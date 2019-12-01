@@ -11,5 +11,11 @@ class PagesController < ApplicationController
   end
 
   def discover
+    @discover = [
+      "Kanye West", "Post Malone", "Shaun Martin", "Snarky Puppy",
+      "Nicoslas Jaar", "Jeff Mills", "Ibrahim Maalouf", "Jo Kaiat",
+      "Maceo Plex", "Carl Cox", "Amelie Lens", "Dennis Cruz",
+      "Corine", "Vald", "Jorja Smith", "Kota The Friend"
+    ]
   end
 end

@@ -1,0 +1,11 @@
+.track-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  height: 45px;
+  top: 0;
+  background: white;
+  border-bottom: 1px solid $sgray;
+  z-index: 10;
+}

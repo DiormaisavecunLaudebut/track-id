@@ -1,17 +1,14 @@
 <% image = "https://res.cloudinary.com/dlodtvkez/image/upload/v1574948584/discover#{index + 1}.jpg" %>
-<% discover = [["Kanye West"], ["Post Malone"], ["Shaun Martin"], ["Snarky Puppy"],
-  ["Nicoslas Jaar"],["Jeff Mills"],["Ibrahim Maalouf"],["Jo Kaiat"],
-  ["Maceo Plex"],["Carl Cox"],["Amelie Lens"],["Dennis Cruz"],
-  ["Corine"],["Vald"],["Jorja Smith"],["Kota The Friend"]
-]%>
-<div class="recent-card">
-  <div class="top-img" style="background-image: url(<%= image %>)">
+
+<div class="recent-card" style="background: black;box-shadow:none;">
+  <div class="top-img" style="background-image: url(<%= image %>)"></div>
 
   <div class="recent-artist">
-    <h4 style="color: white;"><%= discover[index] %>'s Playlist</h4>
+    <h4 style="color: white;"><%= @discover[index] %>'s Playlist</h4>
   </div>
+
   <div class="apple-icon d-flex justify-content-center align-items-center">
-    <%= cl_image_tag 'apple-icon', height: 12, width: 12 %>
+    <%= cl_image_tag 'apple-icon', height: 10, width: 10 %>
     <p style="margin: 0 0 0 4px;font-weight: bold; color: white; font-size: 8px;">Music</p>
   </div>
 </div>
