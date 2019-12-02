@@ -1,0 +1,12 @@
+<div class="message-item mb-5">
+  <div class="small-avatar"></div>
+  <div class="message-details">
+    <div class="message-owner"><%= message.user.username %></div>
+    <div class="message-body"><%= message.body %></div>
+  </div>
+      <div class="message-actions">
+      <p><%= ((Time.now - message.created_at) / 86_400).round %>D</p>
+      <p>Upvote</p>
+      <p>Reply</p>
+    </div>
+</div>

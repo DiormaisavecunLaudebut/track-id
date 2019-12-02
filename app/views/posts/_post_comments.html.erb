@@ -1,1 +1,23 @@
-<div class="post-comments hide"></div>
+<div class="post-comments hide">
+  <% view = 'view_added' if post.views.find {|i| i.user_id == current_user.id } %>
+
+  <div class="d-flex post-item px-3 mb-3 <%= view %>" data-post-views="<%= post.views.count %>" data-post-id="<%= post.id %>">
+    <div class="avatar"></div>
+    <div class="post-item-details">
+      <div class="post-username"><%= post.user.username %></div>
+      <div class="post-item-title"><%= post.title %></div>
+      <div class="d-flex justify-content-between">
+        <div class="d-flex align-items-center play-view">
+          <i class="fas fa-play post-item-play"></i>
+          <span class="post-view"></span>
+        </div>
+      </div>
+    </div>
+    <div class="play-round">
+      <i style="color: white;font-size: 12px;" class="fas fa-play"></i>
+    </div>
+  </div>
+  <% post.messages.each do |message| %>
+    <%= render "messages", message: message %>
+  <% end %>
+</div>

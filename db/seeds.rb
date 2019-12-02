@@ -23,6 +23,7 @@ Upvote.destroy_all
   message = Message.create(
     body: "#{form.sample} #{Faker::Music::RockBand.name} #{ending.sample}",
     post: post,
+    user: user
   )
   upvote = Upvote.create(
     user: User.all.sample,

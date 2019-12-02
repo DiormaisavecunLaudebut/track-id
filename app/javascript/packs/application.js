@@ -3,7 +3,7 @@ import { moveWaves } from '../components/sound-wave';
 import { playExtract } from '../components/play-extract';
 import { displayPostViews } from '../components/display-post-views';
 import { openConversation } from '../components/display-post-comments';
-import { startRecording } from '../components/record-audio';
+// import { startRecording } from '../components/record-audio';
 
 const homeScreen = document.querySelector('.home-center');
 const posts = document.querySelectorAll('.play-click');
@@ -12,7 +12,7 @@ const conversations = document.querySelectorAll('.comments-click');
 displayPostViews()
 posts.forEach(post => post.addEventListener('click', playExtract))
 conversations.forEach(conv => conv.addEventListener('click', openConversation))
-homeScreen.addEventListener('click', startRecording)
+// homeScreen.addEventListener('click', startRecording)
 //setInterval(moveWaves, 20);
 
 
