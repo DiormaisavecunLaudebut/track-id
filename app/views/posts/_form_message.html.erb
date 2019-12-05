@@ -1,4 +1,4 @@
-<%= simple_form_for [ post, message ], html: { class: "new-comment"} do |form| %>
+<%= simple_form_for [ post, message ], html: { "data-remote" => true, class: "new-comment"} do |form| %>
   <div class="new-comment-form-content">
     <div class="medium-avatar ml-3"></div>
     <div class="text-border"></div>

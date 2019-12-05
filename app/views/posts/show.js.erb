@@ -26,6 +26,7 @@ function manageListeners() {
 
 function appendConversationShow(show) {
   const postItem = document.querySelector('[data-post-id="<%= @post.id %>"]');
+  postItem.classList.add('show-open');
   postItem.insertAdjacentHTML('afterend', show);
   manageListeners()
 

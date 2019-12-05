@@ -8,24 +8,24 @@
     <div class="message-actions">
       <p class="font-weight-thin" ><%= ((Time.now - message.created_at) / 86_400).round %>d</p>
       <% if upvote == 'upvoted' %>
-        <%= link_to post_message_unupvote_path(@post, message),class: 'upvote-link', remote: true, method: :delete do %>
+        <%= link_to post_message_unupvote_path(message.post, message),class: 'upvote-link', remote: true, method: :delete do %>
           <p>Upvote</p>
         <% end %>
         <% else %>
-          <%= link_to post_message_upvote_path(@post, message),class: 'upvote-link', remote: true, method: :post do %>
+          <%= link_to post_message_upvote_path(message.post, message),class: 'upvote-link', remote: true, method: :post do %>
             <p>Upvote</p>
           <% end %>
         <% end %>
       <p>Reply</p>
     </div>
     <% if upvote == 'upvoted' %>
-      <%= link_to post_message_unupvote_path(@post, message),class: 'upvote-link', remote: true, method: :delete do %>
-        <%= render 'upvote-count', message: message %>
+      <%= link_to post_message_unupvote_path(message.post, message),class: 'upvote-link', remote: true, method: :delete do %>
+        <%= render 'shared/upvote-count', message: message %>
       <% end %>
 
       <% else %>
-      <%= link_to post_message_upvote_path(@post, message),class: 'upvote-link', remote: true, method: :post do %>
-        <%= render 'upvote-count', message: message %>
+      <%= link_to post_message_upvote_path(message.post, message),class: 'upvote-link', remote: true, method: :post do %>
+        <%= render 'shared/upvote-count', message: message %>
       <% end %>
     <% end %>
   </div>

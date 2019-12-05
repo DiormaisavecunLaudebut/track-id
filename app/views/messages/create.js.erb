@@ -1,2 +1,10 @@
-var lastMessage = document.querySelector('[data-post-id="<%= @post.id %>"]').lastChild
-console.log(lastMessage)
+function appendNewMessage(message) {
+  const postItem = document.querySelector('[data-post-id="<%= @post.id %>"]');
+  const conv = postItem.nextElementSibling
+  var lastMessage = postItem.nextElementSibling.lastElementChild
+  lastMessage.insertAdjacentHTML('afterend', message);
+  document.querySelector("#message_body").value = "";
+  conv.style.height = conv.offsetHeight + lastMessage.offsetHeight + "px"
+}
+
+appendNewMessage(`<%= render 'shared/message', message: @message %>`);

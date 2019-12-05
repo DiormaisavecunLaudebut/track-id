@@ -8,16 +8,18 @@ const setMessagesMaxWidth = ()  => {
   })
 }
 
-const blockScroll = (min, max) => {
-  if (window.scrollY < min) {
-    window.scrollTo(0, min);
-  } else if (window.scrollY > max) {
-    console.log(`min ==> ${min}\nmax ==> ${max}\n\n`)
-    window.scrollTo(0, max)
+const blockScroll = (min, max, postItem) => {
+  if (postItem.classList.value.match('show-open')) {
+    if (window.scrollY < min) {
+      window.scrollTo(0, min);
+    } else if (window.scrollY > max) {
+      console.log(`min ==> ${min}\nmax ==> ${max}\n\n`)
+      window.scrollTo(0, max)
+    }
   }
 }
 
-const setStyle = (filter, conv) => {
+const setStyle = (filter, conv, postItem) => {
   filter.style.top = window.scrollY + "px"
   filter.classList.add('open')
   filter.style.height = (window.innerHeight) + "px"
@@ -29,20 +31,24 @@ const setStyle = (filter, conv) => {
   const form = document.getElementById('new_message')
   const ScrollMin = window.scrollY
   const scrollMax = conv.offsetTop + conv.offsetHeight - window.innerHeight + form.offsetHeight
-  document.addEventListener('scroll', e => blockScroll(ScrollMin, scrollMax), true)
+  document.addEventListener('scroll', e => blockScroll(ScrollMin, scrollMax, postItem), true)
 }
 
-const closePostShow = (filter, nodes) => {
-  //document.removeEventListener('scroll', blockScroll, true)
-  filter.addEventListener('click', e => nodes.forEach(node => node.remove()))
-}
+const closePostShow = (filter, nodes, postItem) => {
+  filter.addEventListener('click', e => nodes.forEach((node) => {
+    node.remove();
+    postItem.classList.remove('show-open');
+  })
+)}
 
 const styleThisShit = (nodes) => {
+  //console.log(nodes)
   const filter = nodes.find(e => e.classList.value.match('opacity-filter'));
   const conv = nodes.find(e => e.classList.value.match('post-comments'));
-  setStyle(filter, conv);
+  const postItem = nodes[0].previousElementSibling
+  setStyle(filter, conv, postItem);
   setMessagesMaxWidth();
-  closePostShow(filter, nodes);
+  closePostShow(filter, nodes, postItem);
 }
 
 const callback = function(mutationsList, observer) {
