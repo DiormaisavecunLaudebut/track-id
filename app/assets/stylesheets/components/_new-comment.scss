@@ -1,0 +1,70 @@
+.new-comment {
+  position: absolute;
+  background: white;
+  width: 100%;
+  z-index: 10000;
+  bottom: 0;
+  border-top: 1px solid $sgray;
+  padding: 0.5rem 0;
+}
+.new-comment-form-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  :first-child {
+    margin-bottom: 0 !important;
+  }
+}
+.medium-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-image: url('https://cdn2.stylecraze.com/wp-content/uploads/2014/09/5-Perfect-Eyebrow-Shapes-For-Heart-Shaped-Face-1.jpg');
+  background-size: contain;
+  background-position: center;
+}
+
+.message_body {
+  margin-bottom: 0px;
+  margin-left: 8px;
+  width: 80%;
+  position: relative;
+  :first-child {
+    border-radius: 25px;
+    height: 40px;
+  }
+}
+
+.submit-message {
+  position: absolute;
+  right: 12px;
+  font-size: 12px;
+  color: $shazam;
+  font-weight: bold;
+  opacity: 0.5;
+  z-index: 3;
+  transition: opacity 0.1s ease;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+}
+
+.text-border {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 25px;
+  right: 10px;
+  left: 64px;
+  z-index: 1;
+  margin: 0.5rem 0;
+  background: rgba(200, 200, 200, 0.15);
+}
+
+#message_body {
+  border: none;
+  width: 85%;
+  font-size: 14px;
+}
+

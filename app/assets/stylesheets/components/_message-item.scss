@@ -1,7 +1,6 @@
 .message-item {
   display: flex;
   justify-content: flex-start;
-  align-items: center;
   position: relative;
   width: fit-content;
 }
@@ -20,26 +19,30 @@
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  bottom: -12px;
-  left: 30%;
-  width: 100px;
+  bottom: -16px;
+  left: 14px;
+  width: 120px;
 }
 
 .message-owner {
   font-size: 12px;
+  margin: 0 12px;
 }
 
 .message-body {
   font-size: 14px;
+  margin: 0 12px;
 }
 
 .message-details {
-  background: $sgray;
-  border-radius: 100px;
+  background: rgba(170,170,170, 0.2);
+  border-radius: 22px;
+  padding: 6px 0;
+  position: relative;
 }
 
 div.message-actions * {
   margin: 0;
   color: rgba(120,120,120, 1);
-  font-size: 12px;
+  font-size: 11px;
 }

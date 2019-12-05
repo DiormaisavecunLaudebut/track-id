@@ -1,0 +1,4 @@
+<div class="upvotes-container <%= 'hide' if message.upvotes.count == 0 %>">
+  <div class="upvote-triangle"></div>
+  <p class="upvote-count"><%= message.upvotes.count %></p>
+</div>

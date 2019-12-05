@@ -1,0 +1,8 @@
+<%= simple_form_for [ post, message ], html: { class: "new-comment"} do |form| %>
+  <div class="new-comment-form-content">
+    <div class="medium-avatar ml-3"></div>
+    <div class="text-border"></div>
+    <%= form.input :body, label: false, placeholder: "Guess the track...", class: 'hide' %>
+    <%= form.submit value: 'Post', class: 'submit-message' %>
+  </div>
+<% end %>

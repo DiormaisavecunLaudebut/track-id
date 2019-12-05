@@ -5,6 +5,36 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def show
+    @post = Post.find(params[:id].to_i)
+    @message = Message.new
+    respond_to do |format|
+      format.html { render 'posts/show' }
+      format.js
+    end
+  end
+
+  def upvote
+    @message = Message.find(params[:message_id].to_i)
+    Upvote.create(user: current_user, message: @message)
+
+    respond_to do |format|
+      format.html { render 'posts/upvote' }
+      format.js
+    end
+  end
+
+  def unupvote
+    @message = Message.find(params[:message_id].to_i)
+    upvote = Upvote.where(message: @message, user: current_user).take
+    upvote.delete
+
+    respond_to do |format|
+      format.html { render 'posts/unupvote' }
+      format.js
+    end
+  end
+
   def create_view
     @post = Post.find(params[:post_id].to_i)
     already_viewed = View.where(post: @post).find { |i| i.user_id == current_user.id }

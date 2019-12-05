@@ -1,0 +1,13 @@
+var message = document.querySelector('[data-message-id="<%= @message.id %>"]');
+var links = message.querySelectorAll('.upvote-link');
+
+message.querySelector('.upvotes-container').classList.remove('hide');
+
+links.forEach((link) => {
+  link.dataset.method = "delete";
+  link.href = link.href.replace('upvote', 'unupvote');
+})
+
+message.querySelector('.upvote-count').innerHTML = "<%= @message.upvotes.count %>"
+
+

@@ -1,4 +1,4 @@
-<div class="post-comments hide">
+<div class='post-comments'>
   <% view = 'view_added' if post.views.find {|i| i.user_id == current_user.id } %>
 
   <div class="d-flex post-item px-3 mb-3 <%= view %>" data-post-views="<%= post.views.count %>" data-post-id="<%= post.id %>">
@@ -17,7 +17,9 @@
       <i style="color: white;font-size: 12px;" class="fas fa-play"></i>
     </div>
   </div>
-  <% post.messages.each do |message| %>
-    <%= render "messages", message: message %>
+  <% post.messages.sort_by {|i| i.upvotes.count}.reverse.each do |message| %>
+    <%= render "shared/message", message: message %>
   <% end %>
 </div>
+<div class="opacity-filter"></div>
+<%= render 'form_message', post: post, message: Message.new %>

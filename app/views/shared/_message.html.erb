@@ -1,0 +1,32 @@
+<% upvote = 'upvoted' if message.upvotes.find {|i| i.user_id == current_user.id } %>
+
+<div class="message-item mb-4 px-3 <%= upvote %>" data-message-upvotes="<%= message.upvotes.count %>" data-message-id="<%= message.id %>">
+  <div class="small-avatar"></div>
+  <div class="message-details ml-3">
+    <div class="message-owner"><%= message.user.username %></div>
+    <div class="message-body"><%= message.body %></div>
+    <div class="message-actions">
+      <p class="font-weight-thin" ><%= ((Time.now - message.created_at) / 86_400).round %>d</p>
+      <% if upvote == 'upvoted' %>
+        <%= link_to post_message_unupvote_path(@post, message),class: 'upvote-link', remote: true, method: :delete do %>
+          <p>Upvote</p>
+        <% end %>
+        <% else %>
+          <%= link_to post_message_upvote_path(@post, message),class: 'upvote-link', remote: true, method: :post do %>
+            <p>Upvote</p>
+          <% end %>
+        <% end %>
+      <p>Reply</p>
+    </div>
+    <% if upvote == 'upvoted' %>
+      <%= link_to post_message_unupvote_path(@post, message),class: 'upvote-link', remote: true, method: :delete do %>
+        <%= render 'upvote-count', message: message %>
+      <% end %>
+
+      <% else %>
+      <%= link_to post_message_upvote_path(@post, message),class: 'upvote-link', remote: true, method: :post do %>
+        <%= render 'upvote-count', message: message %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

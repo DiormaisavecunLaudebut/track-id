@@ -1,0 +1,34 @@
+
+function moveNewMessage(message) {
+  message.style.bottom = -window.scrollY + "px"
+}
+
+
+function enablePost(e) {
+  const submit = e.currentTarget.parentElement.nextElementSibling
+  e.currentTarget.value == "" ? submit.style.opacity = "0.5" : submit.style.opacity = "1"
+}
+
+function focusOnMessageBody(messageBody) {
+  document.querySelector('.text-border').addEventListener('click', e => messageBody.focus());
+}
+
+function manageListeners() {
+  const messageBody = document.getElementById('message_body');
+  const newMessage = document.querySelector('.new-comment');
+
+  newMessage.style.bottom = -window.scrollY + "px";
+
+  focusOnMessageBody(messageBody);
+  messageBody.addEventListener('keyup', enablePost);
+  document.addEventListener('scroll', e => moveNewMessage(newMessage));
+}
+
+function appendConversationShow(show) {
+  const postItem = document.querySelector('[data-post-id="<%= @post.id %>"]');
+  postItem.insertAdjacentHTML('afterend', show);
+  manageListeners()
+
+}
+
+appendConversationShow(`<%= render 'post_comments', post: @post %>`);

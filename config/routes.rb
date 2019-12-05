@@ -6,7 +6,13 @@ Rails.application.routes.draw do
   get 'nothing', to: 'pages#nothing', as: :nothing
 
   get 'tracks', to: 'posts#index', as: :tracks
-  resources :posts, only: [] do
+
+  resources :posts, only: [:show] do
     post 'create_view', to: 'posts#create_view', as: :create_view
+    delete 'unupvote', to: 'posts#unupvote', as: :unupvote
+    resources :messages, only: [:create] do
+      post 'upvote', to: 'posts#upvote', as: :upvote
+      delete 'unupvote', to: 'posts#unupvote', as: :unupvote
+    end
   end
 end

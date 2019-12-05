@@ -10,7 +10,5 @@
 
 <% @posts.each do |post| %>
   <%= render 'post_item', post: post %>
-  <%= render 'post_comments', post: post %>
-  <div class="opacity-filter hide"></div>
 <% end %>
 
