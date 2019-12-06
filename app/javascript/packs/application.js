@@ -4,7 +4,7 @@ import { playExtract } from '../components/play-extract';
 import { displayPostViews } from '../components/display-post-views';
 import { observeDOM } from '../components/post-show-style';
 
-// import { startRecording } from '../components/record-audio';
+import { startRecording } from '../components/record-audio';
 
 const homeScreen = document.querySelector('.home-center');
 const posts = document.querySelectorAll('.play-click');
@@ -14,6 +14,7 @@ displayPostViews()
 posts.forEach(post => post.addEventListener('click', playExtract))
 conversations.forEach(conv => conv.addEventListener('click', openConversation))
 observeDOM();
+startRecording();
 // homeScreen.addEventListener('click', startRecording)
 //setInterval(moveWaves, 20);
 
