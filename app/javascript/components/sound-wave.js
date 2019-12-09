@@ -7,9 +7,12 @@ const range = ((min, max, step = 1) => (Array(Math.floor((max - min)/step) + 1) 
 const waves = document.querySelectorAll('.sound-wave')
 
 function moveWaves() {
-    const wave = waves[Math.floor(Math.random()*waves.length)]
-    const values = range(5, 30)
+  const wave = waves[Math.floor(Math.random()*waves.length)]
+
+  const values = range(5, 30)
+  if (wave) {
     wave.style.height = [Math.floor(Math.random()*values.length)] + "px"
+  }
 }
 
 export { moveWaves }

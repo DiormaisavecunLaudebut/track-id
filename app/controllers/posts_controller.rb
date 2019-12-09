@@ -16,21 +16,23 @@ class PostsController < ApplicationController
 
   def upvote
     upvote = Upvote.new(user: current_user, message: @message)
-    return unless upvote.save
 
-    respond_to do |format|
-      format.html { render 'posts/upvote' }
-      format.js
+    if upvote.save
+      respond_to do |format|
+        format.html { redirect_to post_show_path(@post) }
+        format.js
+      end
+    else
+      redirect_to new_user_registration_path
     end
   end
 
   def unupvote
     upvote = Upvote.where(message: @message, user: current_user).take
-    return unless upvote
-
     upvote.delete
+
     respond_to do |format|
-      format.html { render 'posts/unupvote' }
+      format.html { redirect_to post_show_path(@post) }
       format.js
     end
   end

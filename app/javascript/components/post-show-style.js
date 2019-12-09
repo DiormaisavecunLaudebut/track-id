@@ -8,12 +8,14 @@ const setMessagesMaxWidth = ()  => {
   })
 }
 
-const blockScroll = (min, max, postItem) => {
+const blockScroll = (min, postItem) => {
   if (postItem.classList.value.match('show-open')) {
+    // 57 refers to the height of the new message form
+    const conv = postItem.nextElementSibling
+    const max = conv.offsetTop + conv.offsetHeight - window.innerHeight + 57
     if (window.scrollY < min) {
       window.scrollTo(0, min);
     } else if (window.scrollY > max) {
-      console.log(`min ==> ${min}\nmax ==> ${max}\n\n`)
       window.scrollTo(0, max)
     }
   }
@@ -24,14 +26,12 @@ const setStyle = (filter, conv, postItem) => {
   filter.classList.add('open')
   filter.style.height = (window.innerHeight) + "px"
 
-  const convHeight = conv.offsetHeight > (window.innerHeight * 2 / 3) ? conv.offsetHeight : (window.innerHeight * 2 / 3)
+  const convHeight = conv.offsetHeight > (window.innerHeight * 2 / 3) ? conv.offsetHeight : (window.innerHeight * 2 / 3 - 57)
   conv.style.top = (window.scrollY + window.innerHeight / 3) + "px";
   conv.style.height = convHeight + "px";
 
-  const form = document.getElementById('new_message')
   const ScrollMin = window.scrollY
-  const scrollMax = conv.offsetTop + conv.offsetHeight - window.innerHeight + form.offsetHeight
-  document.addEventListener('scroll', e => blockScroll(ScrollMin, scrollMax, postItem), true)
+  document.addEventListener('scroll', e => blockScroll(ScrollMin, postItem), true)
 }
 
 const closePostShow = (filter, nodes, postItem) => {

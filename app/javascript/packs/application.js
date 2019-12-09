@@ -4,7 +4,7 @@ import { playExtract } from '../components/play-extract';
 import { displayPostViews } from '../components/display-post-views';
 import { observeDOM } from '../components/post-show-style';
 
-import { startRecording } from '../components/record-audio';
+import { manageRecording } from '../components/record-audio';
 
 const homeScreen = document.querySelector('.home-center');
 const posts = document.querySelectorAll('.play-click');
@@ -14,9 +14,19 @@ displayPostViews()
 posts.forEach(post => post.addEventListener('click', playExtract))
 conversations.forEach(conv => conv.addEventListener('click', openConversation))
 observeDOM();
-startRecording();
-// homeScreen.addEventListener('click', startRecording)
-//setInterval(moveWaves, 20);
+manageRecording();
+setInterval(moveWaves, 20);
+
+
+// import cloudinary from "cloudinary-core";
+
+// const cloudName = 'dlodtvkez';
+// const unsignedUploadPreset = 'z3lte9fj';
+
+// const callback = (error, result) => {
+//   console.log(result, error);
+// }
+
 
 
 // navigator.mediaDevices.getUserMedia({ audio: true })
@@ -37,6 +47,10 @@ startRecording();
 
 //     setTimeout(() => {
 //       mediaRecorder.stop();
+//       cloudinary.v2.uploader.unsigned_upload(audio,
+//         unsignedUploadPreset,
+//         {resource_type: "video"},
+//         callback);
 //     }, 3000);
 //   });
 
