@@ -3,6 +3,9 @@ form = ["I think it's", "It might be", "What about", "", "", "hello ! this is", 
 ending = ["?", ".", "!", "!!", "!!!", "?", "", "", ""]
 url = "https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png"
 
+# replace url by this line if you a random avatar pic, and not the same again and again
+# url = "https://i.pravatar.cc/300"
+
 User.destroy_all
 Post.destroy_all
 Message.destroy_all
