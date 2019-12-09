@@ -1,4 +1,3 @@
-const constraints = {audio: true}
 const banner = document.querySelector('.home-banner');
 const homeScreen = document.querySelector('.home-center');
 const photoIcon = document.querySelector('.photo-icon');
@@ -15,27 +14,42 @@ const startPulseAnimation = () => {
   })
 }
 
-function moveRound() {
-  const actualSize = parseInt(round1.style.top, 10)
-  round1.style.top = actualSize - 1 + "px"
-  round1.style.bottom = actualSize - 1  + "px"
-  round1.style.left = actualSize - 1  + "px"
-  round1.style.right = actualSize - 1 + "px"
+const stopPulseAnimation = () => {
+  let i = 1
+  shazamLogo.parentElement.classList.remove('shazam-pulse');
+    rounds.forEach(round => {
+    round.classList.remove(`round${i}`);
+    round.classList.remove('pulse-scale');
+    i++
+  })
+}
+
+const stopRecording = () => {
+  const text = homeScreen.firstElementChild;
+  banner.style.transform = "translate(0, -0)";
+  homeScreen.style.transform = "translate(0, 0)";
+  photoIcon.style.opacity = "1";
+  text.innerHTML = "Tap to Shazam";
+  stopPulseAnimation();
 }
 
 const startRecording = () => {
+  const text = homeScreen.firstElementChild;
+  banner.style.transform = "translate(0, -78px)"
+  homeScreen.style.transform = "translate(0, 78px)"
+  photoIcon.style.opacity = "0"
+  text.innerHTML = "Listening"
+  startPulseAnimation();
+}
+
+const manageRecording = () => {
   if (homeScreen) {
     homeScreen.addEventListener('click', e => {
-      const text = homeScreen.firstElementChild;
-      banner.style.transform = "translate(0, -78px)"
-      homeScreen.style.transform = "translate(0, 78px)"
-      photoIcon.style.opacity = "0"
-      text.innerHTML = "Listening"
-      startPulseAnimation();
+      shazamLogo.parentElement.classList.value == "" ? startRecording() : stopRecording()
     })
   }
 }
 
 
 
-export { startRecording }
+export { manageRecording }
