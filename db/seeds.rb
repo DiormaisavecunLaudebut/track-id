@@ -1,12 +1,13 @@
 require 'faker'
-form = ["I think it's", "It might be", "What about"]
-ending = ["?", ".", "!", "!!", "!!!", "?"]
+form = ["I think it's", "It might be", "What about", "", "", "hello ! this is", "That's", "you fuckers it's"]
+ending = ["?", ".", "!", "!!", "!!!", "?", "", "", ""]
 url = "https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png"
 
 User.destroy_all
 Post.destroy_all
 Message.destroy_all
 Upvote.destroy_all
+View.destroy_all
 
 100.times do
   user = User.new(
@@ -20,13 +21,23 @@ Upvote.destroy_all
     title: "Please help me find this track !",
     user: user
   )
-  message = Message.create(
-    body: "#{form.sample} #{Faker::Music::RockBand.name} #{ending.sample}",
-    post: post,
-    user: user
-  )
-  upvote = Upvote.create(
-    user: User.all.sample,
-    message: message
-  )
+  (10..22).times do
+    View.create(
+      user: user,
+      post: Post.all.sample
+    )
+  end
+  (3..8).to_a.sample.times do
+    message = Message.create(
+      body: "#{form.sample} #{Faker::Music::RockBand.name} #{ending.sample}",
+      post: Post.all.sample,
+      user: user
+    )
+  end
+  (0..30.to_a.sample.times do
+    upvote = Upvote.create(
+      user: user,
+      message: Message.all.sample
+    )
+  end
 end
