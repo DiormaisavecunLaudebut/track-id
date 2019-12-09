@@ -1,6 +1,7 @@
 var message = document.querySelector('[data-message-id="<%= @message.id %>"]');
 var links = message.querySelectorAll('.upvote-link');
 
+
 links.forEach((link) => {
   link.dataset.method = "post";
   link.href = link.href.replace('unupvote', 'upvote');
