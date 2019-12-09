@@ -21,7 +21,7 @@ View.destroy_all
     title: "Please help me find this track !",
     user: user
   )
-  (10..22).times do
+  (10..22).to_a.times do
     View.create(
       user: user,
       post: Post.all.sample
