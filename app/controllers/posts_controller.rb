@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     @posts = Post.all
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
 
   def create_view
     @post = Post.find(params[:post_id].to_i)
-    @already_viewed = !View.where(post: @post).find { |i| i.user_id == current_user.id }.nil?
+    @already_viewed = @post.viewed_by?(current_user)
     View.create(user: current_user, post: @post) unless @already_viewed
 
     respond_to do |format|
