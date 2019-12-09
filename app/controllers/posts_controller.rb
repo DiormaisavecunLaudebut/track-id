@@ -37,8 +37,8 @@ class PostsController < ApplicationController
 
   def create_view
     @post = Post.find(params[:post_id].to_i)
-    already_viewed = View.where(post: @post).find { |i| i.user_id == current_user.id }
-    View.create(user: current_user, post: @post) unless already_viewed
+    @already_viewed = !View.where(post: @post).find { |i| i.user_id == current_user.id }.nil?
+    View.create(user: current_user, post: @post) unless @already_viewed
 
     respond_to do |format|
       format.html { render 'posts/index' }

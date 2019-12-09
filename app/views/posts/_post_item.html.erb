@@ -1,6 +1,4 @@
-<% view = 'view_added' if post.views.find {|i| i.user_id == current_user.id } %>
-
-<div class="d-flex post-item px-3 <%= view %>" data-post-views="<%= post.views.count %>" data-post-id="<%= post.id %>">
+<div class="d-flex post-item px-3" data-post-views="<%= post.views.count %>" data-post-id="<%= post.id %>">
   <%= link_to post_create_view_path(post), remote: true, method: :post do %>
     <div class="play-click"></div>
   <% end %>
