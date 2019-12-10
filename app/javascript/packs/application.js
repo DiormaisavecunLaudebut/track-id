@@ -6,7 +6,6 @@ import { observeDOM } from '../components/post-show-style';
 
 import { manageRecording } from '../components/record-audio';
 
-const homeScreen = document.querySelector('.home-center');
 const posts = document.querySelectorAll('.play-click');
 const conversations = document.querySelectorAll('.comments-click');
 

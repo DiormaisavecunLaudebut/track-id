@@ -35,6 +35,8 @@ const stopRecording = () => {
 
 const startRecording = () => {
   const text = homeScreen.firstElementChild;
+  document.querySelector('body').style.position = "fixed"
+  document.querySelector('body').style.width = "100%"
   banner.style.transform = "translate(0, -78px)"
   homeScreen.style.transform = "translate(0, 78px)"
   photoIcon.style.opacity = "0"
