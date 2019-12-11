@@ -46,6 +46,8 @@ setInterval(moveWaves, 20);
 
 //     setTimeout(() => {
 //       mediaRecorder.stop();
+//       console.log(cloudinary)
+//       console.log(cloudinary.v2)
 //       cloudinary.v2.uploader.unsigned_upload(audio,
 //         unsignedUploadPreset,
 //         {resource_type: "video"},
