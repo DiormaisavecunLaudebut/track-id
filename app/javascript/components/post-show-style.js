@@ -26,7 +26,7 @@ const setStyle = (filter, conv, postItem) => {
   filter.classList.add('open')
   filter.style.height = (window.innerHeight) + "px"
 
-  const convHeight = conv.offsetHeight > (window.innerHeight * 2 / 3) ? conv.offsetHeight : (window.innerHeight * 2 / 3 - 57)
+  const convHeight = conv.offsetHeight > (window.innerHeight * 2 / 3) ? conv.offsetHeight + 57 : (window.innerHeight * 2 / 3 - 57)
   conv.style.top = (window.scrollY + window.innerHeight / 3) + "px";
   conv.style.height = convHeight + "px";
 
