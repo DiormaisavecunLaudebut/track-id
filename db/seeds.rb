@@ -12,19 +12,19 @@ Message.destroy_all
 Upvote.destroy_all
 View.destroy_all
 
-100.times do
+100.times do |i|
   user = User.new(
-    email: Faker::Internet.email,
-    username: Faker::Name.first_name,
+    email: Faker::Internet.email + i.to_s,
+    username: Faker::Name.first_name + i.to_s,
     password: "atlantis"
   )
-  user.remote_photo_url = url
+  # user.remote_photo_url = url
   user.save!
   post = Post.create(
     title: "Please help me find this track !",
     user: user
   )
-  (10..22).to_a.times do
+  (10..22).to_a.sample.times do
     View.create(
       user: user,
       post: Post.all.sample
@@ -37,7 +37,7 @@ View.destroy_all
       user: user
     )
   end
-  (0..30.to_a.sample.times do
+  (0..30).to_a.sample.times do
     upvote = Upvote.create(
       user: user,
       message: Message.all.sample
