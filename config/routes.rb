@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+
   root to: 'pages#home'
   get 'library', to: 'pages#library', as: :library
   get 'discover', to: 'pages#discover', as: :discover
@@ -15,5 +16,10 @@ Rails.application.routes.draw do
       post 'upvote', to: 'posts#upvote', as: :upvote
       delete 'unupvote', to: 'posts#unupvote', as: :unupvote
     end
+  end
+
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
   end
 end
