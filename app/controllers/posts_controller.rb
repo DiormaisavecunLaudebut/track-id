@@ -21,6 +21,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def untracked
+    respond_to do |format|
+      format.html { redirect_to post_show_path(@post) }
+      format.js
+    end
+  end
+
   def actions
     respond_to do |format|
       format.html { redirect_to post_actions_path(@post) }

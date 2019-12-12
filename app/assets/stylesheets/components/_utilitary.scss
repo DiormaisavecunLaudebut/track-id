@@ -15,3 +15,11 @@
 .hide {display:none !important}
 
 .body-scroll {overflow: hidden}
+
+.filter-shazam {
+  filter: invert(37%) sepia(43%) saturate(4208%) hue-rotate(200deg) brightness(98%) contrast(100%);
+}
+
+.filter-grey {
+  filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(332deg) brightness(97%) contrast(92%);
+}

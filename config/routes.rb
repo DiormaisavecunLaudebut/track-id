@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :posts, only: [] do
     post 'tracked', to: 'posts#tracked', as: :tracked
+    delete 'untracked', to: 'posts#untracked', as: :untracked
     get 'actions', to: 'posts#actions', as: :actions
     get 'show', to: 'posts#show', as: :show
     post 'create_view', to: 'posts#create_view', as: :create_view

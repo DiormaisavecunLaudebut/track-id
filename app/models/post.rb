@@ -10,4 +10,8 @@ class Post < ApplicationRecord
   def viewed_by?(user)
     user ? views.map(&:user).include?(user) : nil
   end
+
+  def tracked_by?(user)
+    user ? tracked_posts.map(&:user).include?(user) : nil
+  end
 end

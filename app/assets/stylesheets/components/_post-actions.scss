@@ -1,5 +1,5 @@
 .post-actions {
-  background: yellow;
+  background: white;
   width: 100%;
   position: absolute;
   z-index: 1;
@@ -7,14 +7,28 @@
   position: absolute;
 }
 
-.post-action {
+.action-item {
   display: flex;
+  height: 50px;
   align-items: center;
-  justify-content: space-between;
+  padding-left: 2rem;
+  p {
+    margin: 0;
+    color: #717171;
+  }
+  :first-child {
+    margin-right: 2rem;
+    color: #717171;
+    font-size: 22px;
+  }
+}
+.post-action {
+  justify-content: flex-start;
+
 }
 
 .post-action-cancel {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  border-top: 1px solid #e8e8e8;
+  p {font-size: 18px !important;}
 }

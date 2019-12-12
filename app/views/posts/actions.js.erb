@@ -6,8 +6,10 @@ function removeNodes(nodes) {
 
 function closeActions(filter, actions) {
   const cancel = document.querySelector('.post-action-cancel');
+  const comment = document.getElementById('comment');
   cancel.addEventListener('click', e => removeNodes([filter, actions]));
   filter.addEventListener('click', e => removeNodes([filter, actions]));
+  comment.addEventListener('click', e => removeNodes([filter, actions]));
 }
 
 function manageScroll() {
