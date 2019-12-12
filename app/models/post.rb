@@ -7,10 +7,10 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
 
-  validates :status, inclusion: {
-    in: %w[found pending],
-    message: "status must be either found or pending"
-  }
+  # validates :status, inclusion: {
+  #   in: %w[found pending],
+  #   message: "must be either found or pending"
+  # }
 
   def viewed_by?(user)
     user ? views.map(&:user).include?(user) : nil

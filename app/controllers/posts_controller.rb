@@ -76,8 +76,16 @@ class PostsController < ApplicationController
   private
 
   def post_found?
-    if @message.upvotes.count >= 100
-      # déclancher le mail au créateur du post ainsi qu'aux personnes l'ayant tracké
+    return unless @message.upvotes.count >= 10
+
+    @post.update(status: "found")
+    users = TrackedPost.where(post: @post).map(&:user).push(@post.user)
+    users.each do |user|
+      PostMailer.with(
+        user: user,
+        post: @post,
+        message: @message
+      ).post_found.deliver_now
     end
   end
 
