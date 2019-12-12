@@ -11,7 +11,7 @@
           <p>Upvote</p>
         <% end %>
         <% else %>
-          <%= link_to post_message_upvote_path(message.post, message),class: 'upvote-link', remote: true, method: :post do %>
+          <%= link_to post_message_upvote_path(message.post, message),class: 'upvote-link', method: :post do %>
             <p>Upvote</p>
           <% end %>
         <% end %>
@@ -22,7 +22,7 @@
         <%= render 'shared/upvote-count', message: message %>
       <% end %>
       <% else %>
-      <%= link_to post_message_upvote_path(message.post, message),class: 'upvote-link', remote: true, method: :post do %>
+      <%= link_to post_message_upvote_path(message.post, message),class: 'upvote-link', method: :post do %>
         <%= render 'shared/upvote-count', message: message %>
       <% end %>
     <% end %>

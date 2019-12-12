@@ -1,15 +1,25 @@
+function expandConversation(conv, lastMessage) {
+  if (conv.childElementCount > 4) {
+    conv.style.height = `calc(${conv.offsetHeight + lastMessage.offsetHeight}px + 1.5rem)`
+    window.scroll(0, conv.offsetHeight + conv.offsetTop  - window.innerHeight + 57)
+  }
+}
+function styleNewMessage(previousMessage) {
+  const newMessage = previousMessage.nextElementSibling;
+  const maxWidth = window.innerWidth - 64 - 50;
+  newMessage.style.maxWidth = maxWidth + "px";
+}
+
 function appendNewMessage(message) {
   const postItem = document.querySelector('[data-post-id="<%= @post.id %>"]');
   const conv = postItem.nextElementSibling
   var lastMessage = postItem.nextElementSibling.lastElementChild
 
   lastMessage.insertAdjacentHTML('afterend', message);
+  styleNewMessage(lastMessage);
   document.querySelector("#message_body").value = "";
-  if (conv.childElementCount > 4) {
-    conv.style.height = `calc(${conv.offsetHeight + lastMessage.offsetHeight}px + 1.5rem)`
-    window.scroll(0, conv.offsetHeight + conv.offsetTop  - window.innerHeight + 57)
-  }
 
+  expandConversation(conv, lastMessage);
 }
 
 appendNewMessage(`<%= render 'shared/message', message: @message %>`);

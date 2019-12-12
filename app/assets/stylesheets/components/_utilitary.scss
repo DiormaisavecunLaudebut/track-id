@@ -23,3 +23,21 @@
 .filter-grey {
   filter: invert(45%) sepia(0%) saturate(0%) hue-rotate(332deg) brightness(97%) contrast(92%);
 }
+
+@keyframes scale-fast {
+  50% { transform: scale(1.075) }
+  100% { transform: scale(1) }
+}
+
+@keyframes descale-fast {
+  50% { transform: scale(0.925)}
+  100% { transform: scale(1) }
+}
+
+.scale {
+  animation: scale-fast 0.5s;
+}
+
+.descale {
+  animation: descale-fast 0.5s;
+}

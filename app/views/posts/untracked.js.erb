@@ -1,0 +1,17 @@
+var trackAction = document.getElementById('track-action');
+var trackImg = trackAction.querySelector('img');
+var trackText = trackAction.querySelector('p');
+var link = trackAction.parentElement;
+
+function removeScaleAnimation() {
+  trackImg.classList.remove('descale');
+}
+
+trackImg.classList.replace('filter-shazam', 'filter-grey');
+trackImg.classList.add('descale');
+setTimeout(removeScaleAnimation, 750);
+
+trackText.innerHTML = 'Track this post'
+
+link.dataset.method = "post";
+link.href = link.href.replace('untracked', 'tracked');

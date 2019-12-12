@@ -2,14 +2,14 @@
 
   <% if post.tracked_by?(current_user) %>
     <%= link_to post_untracked_path(post.id), remote: :true, method: :delete do %>
-    <div class="post-action action-item">
+    <div id="track-action" class="post-action action-item">
       <%= cl_image_tag 'track-loupe', width: 22, height: 22, class: "filter-shazam" %>
       <p>Post tracked</p>
     </div>
     <% end %>
   <% else %>
     <%= link_to post_tracked_path(post.id), remote: :true, method: :post do %>
-      <div class="post-action action-item">
+      <div id="track-action" class="post-action action-item">
         <%= cl_image_tag 'track-loupe', width: 22, height: 22, class: "filter-grey" %>
         <p>Track this post</p>
       </div>

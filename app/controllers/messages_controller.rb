@@ -5,9 +5,8 @@ class MessagesController < ApplicationController
     @post = Post.find(params["post_id"].to_i)
     body = params["message"]["body"]
     @message = Message.create(post: @post, user: current_user, body: body)
-
     respond_to do |format|
-      format.html redirect_to post_show_path(@post)
+      format.html { redirect_to post_show_path(@post) }
       format.js
     end
   end
