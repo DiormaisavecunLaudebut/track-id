@@ -1,0 +1,37 @@
+function removeNodes(nodes) {
+  const body = document.querySelector('body');
+  nodes.forEach(node => node.remove());
+  body.style.overflow = ""
+}
+
+function closeActions(filter, actions) {
+  const cancel = document.querySelector('.post-action-cancel');
+  cancel.addEventListener('click', e => removeNodes([filter, actions]));
+  filter.addEventListener('click', e => removeNodes([filter, actions]));
+}
+
+function manageScroll() {
+  const body = document.querySelector('body');
+  body.style.overflow = "hidden"
+}
+
+function stylePostActions(post) {
+  const actions = post.nextElementSibling;
+  const filter = actions.nextElementSibling;
+  const actionsY =  window.scrollY + window.innerHeight - actions.offsetHeight
+  actions.style.top = actionsY + "px"
+  filter.style.top = actionsY - window.innerHeight + "px"
+  filter.style.height = window.innerHeight + "px"
+  manageScroll();
+  closeActions(filter, actions);
+}
+
+
+
+function appendPostActions(actions) {
+  const postItem = document.querySelector('[data-post-id="<%= @post.id %>"]');
+  postItem.insertAdjacentHTML('afterend', actions);
+  stylePostActions(postItem);
+}
+
+appendPostActions(`<%= render 'post_actions', post: @post %>`);

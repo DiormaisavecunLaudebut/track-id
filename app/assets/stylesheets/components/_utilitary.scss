@@ -1,6 +1,9 @@
-.container {background: white;}
-.ts {font-weight:bold; color: white;}
+.container {background: white}
+
+.ts {font-weight:bold; color: white}
+
 .column {flex-direction: column}
+
 .sh-border {
   margin-left: 30px;
   width: 92%;
@@ -9,4 +12,6 @@
   background: $sgray;
   margin-bottom: 12px;
 }
-.hide {display:none !important;}
+.hide {display:none !important}
+
+.body-scroll {overflow: hidden}

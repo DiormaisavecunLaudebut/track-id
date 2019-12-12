@@ -3,6 +3,7 @@ class Post < ApplicationRecord
 
   has_many :messages, dependent: :destroy
   has_many :views, dependent: :destroy
+  has_many :tracked_posts, dependent: :destroy
 
   validates :title, presence: true
 

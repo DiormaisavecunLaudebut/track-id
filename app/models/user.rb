@@ -4,6 +4,7 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
 
   has_many :posts, dependent: :destroy
+  has_many :tracked_posts, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :upvotes, dependent: :destroy
   has_many :views, dependent: :destroy

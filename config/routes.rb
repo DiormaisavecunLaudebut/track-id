@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'tracks', to: 'posts#index', as: :tracks
 
   resources :posts, only: [] do
+    post 'tracked', to: 'posts#tracked', as: :tracked
+    get 'actions', to: 'posts#actions', as: :actions
     get 'show', to: 'posts#show', as: :show
     post 'create_view', to: 'posts#create_view', as: :create_view
     delete 'unupvote', to: 'posts#unupvote', as: :unupvote

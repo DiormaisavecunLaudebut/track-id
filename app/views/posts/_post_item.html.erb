@@ -11,7 +11,7 @@
           <i class="fas fa-play post-item-play"></i>
           <span class="post-view"></span>
         </div>
-        <%= link_to post_show_path(post.id), remote: true do %>
+        <%= link_to post_actions_path(post.id), remote: true do %>
           <i class="fas fa-ellipsis-h post-dots"></i>
         <% end %>
       </div>

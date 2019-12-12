@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :find_post, only: %i[show create_view upvote unupvote]
+  skip_before_action :authenticate_user!, only: %i[index show actions]
+  before_action :find_post, only: %i[show create_view upvote unupvote actions tracked]
   before_action :find_message, only: %i[upvote unupvote]
 
   def index
@@ -10,6 +10,20 @@ class PostsController < ApplicationController
   def show
     respond_to do |format|
       format.html { redirect_to post_show_path(@post) }
+      format.js
+    end
+  end
+
+  def tracked
+    respond_to do |format|
+      format.html { redirect_to post_show_path(@post) }
+      format.js
+    end
+  end
+
+  def actions
+    respond_to do |format|
+      format.html { redirect_to post_actions_path(@post) }
       format.js
     end
   end

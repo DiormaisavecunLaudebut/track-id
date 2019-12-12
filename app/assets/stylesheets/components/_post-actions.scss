@@ -1,0 +1,20 @@
+.post-actions {
+  background: yellow;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  height: fit-content;
+  position: absolute;
+}
+
+.post-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post-action-cancel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
