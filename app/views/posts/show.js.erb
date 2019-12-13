@@ -1,12 +1,25 @@
-
-function moveNewMessage(message) {
-  message.style.bottom = -window.scrollY + "px"
-}
-
+var regex = /\/(.*)\//
 
 function enablePost(e) {
-  const submit = e.currentTarget.parentElement.nextElementSibling
-  e.currentTarget.value == "" ? submit.style.opacity = "0.5" : submit.style.opacity = "1"
+  const submit = e.currentTarget.parentElement.nextElementSibling;
+  const subtmiCache = e.currentTarget.nextElementSibling;
+  if (e.currentTarget.value.match(regex)) {
+    submit.style.opacity = "1"
+    submit.disabled = false
+    submitCache.style.display = "none"
+  } else {
+    submit.style.opacity = "0.5"
+    submit.disabled = true
+    submitCache.style.display = "block"
+  }
+}
+
+function displayErrorMessage(e) {
+  const alert = document.querySelector('.alert-info');
+  if (!e.currentTarget.previousElementSibling.value.match(regex) && !alert) {
+    const body = document.querySelector('body');
+    body.insertAdjacentHTML('beforeend', `<%= render 'shared/flash-message-format'%>`)
+  }
 }
 
 function focusOnMessageBody(messageBody) {
@@ -16,12 +29,12 @@ function focusOnMessageBody(messageBody) {
 function manageListeners() {
   const messageBody = document.getElementById('message_body');
   const newMessage = document.querySelector('.new-comment');
-
+  const submitCache = document.querySelector('.submit-cache');
   newMessage.style.bottom = -window.scrollY + "px";
 
   focusOnMessageBody(messageBody);
+  submitCache.addEventListener('click', displayErrorMessage)
   messageBody.addEventListener('keyup', enablePost);
-  document.addEventListener('scroll', e => moveNewMessage(newMessage));
 }
 
 function appendConversationShow(show) {

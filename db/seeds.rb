@@ -32,7 +32,7 @@ View.destroy_all
   end
   (3..8).to_a.sample.times do
     message = Message.create(
-      body: "#{form.sample} #{Faker::Music::RockBand.name} #{ending.sample}",
+      body: "#{form.sample} /#{Faker::Music::RockBand.name}/ #{ending.sample}",
       post: Post.all.sample,
       user: user
     )

@@ -1,5 +1,5 @@
 .new-comment {
-  position: absolute;
+  position: fixed;
   background: white;
   width: 100%;
   z-index: 10000;
@@ -45,6 +45,15 @@
   opacity: 0.5;
   z-index: 3;
   transition: opacity 0.1s ease;
+}
+
+.submit-cache {
+  position: absolute;
+  z-index: 10;
+  right: 12px;
+  bottom: 10px;
+  top: 10px;
+  left: calc(100vw - 50px);
 }
 
 .form-control:focus {

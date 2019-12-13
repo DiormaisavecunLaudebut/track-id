@@ -14,6 +14,11 @@
   background-position: center;
 }
 
+.user-guess {
+  color: $shazam;
+  font-weight: bold;
+}
+
 .message-actions {
   display: flex;
   justify-content: space-between;

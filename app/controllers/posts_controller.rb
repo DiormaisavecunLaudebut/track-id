@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   def show
     respond_to do |format|
-      format.html { redirect_to post_show_path(@post) }
+      format.html { redirect_to tracks_path }
       format.js
     end
   end
@@ -76,7 +76,7 @@ class PostsController < ApplicationController
   private
 
   def post_found?
-    return unless @message.upvotes.count >= 10
+    return unless @message.upvotes.count >= 100
 
     @post.update(status: "found")
     users = TrackedPost.where(post: @post).map(&:user).push(@post.user)
