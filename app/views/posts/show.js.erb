@@ -28,9 +28,7 @@ function focusOnMessageBody(messageBody) {
 
 function manageListeners() {
   const messageBody = document.getElementById('message_body');
-  const newMessage = document.querySelector('.new-comment');
   const submitCache = document.querySelector('.submit-cache');
-  newMessage.style.bottom = -window.scrollY + "px";
 
   focusOnMessageBody(messageBody);
   submitCache.addEventListener('click', displayErrorMessage)
