@@ -36,6 +36,8 @@ const setStyle = (filter, conv, postItem) => {
 
 const closePostShow = (filter, nodes, postItem) => {
   filter.addEventListener('click', e => nodes.forEach((node) => {
+    const flashAlert = document.querySelector('.alert-info')
+    flashAlert ? flashAlert.remove() : console.log('')
     node.remove();
     postItem.classList.remove('show-open');
   })

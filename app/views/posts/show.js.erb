@@ -18,7 +18,7 @@ function displayErrorMessage(e) {
   const alert = document.querySelector('.alert-info');
   if (!e.currentTarget.previousElementSibling.value.match(regex) && !alert) {
     const body = document.querySelector('body');
-    body.insertAdjacentHTML('beforeend', `<%= render 'shared/flash-message-format'%>`)
+    body.insertAdjacentHTML('beforeend', `<%= render 'shared/flash-message-format' %>`)
   }
 }
 

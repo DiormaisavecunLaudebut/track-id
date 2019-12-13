@@ -1,5 +1,6 @@
 .alert {
   position: fixed;
+  padding: 0.5rem !important;
   top: 16px;
   right: 16px;
   z-index: 99999999;
@@ -7,7 +8,7 @@
   border: none;
   button {
     background: #fff4de;
-    width: 220px;
+    width: 230px;
     opacity: 1;
     border-radius: 20px;
     color: black;
@@ -16,6 +17,10 @@
       font-weight: 600;
       text-shadow: none;
       color: black;
+      i {
+        font-size: 10px;
+        font-weight: normal;
+      }
     }
   }
 }
