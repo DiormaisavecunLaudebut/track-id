@@ -78,13 +78,15 @@ class PostsController < ApplicationController
   def post_found?
     return unless @message.upvotes.count >= 100
 
+    youtube_link = @message.scrap_youtube
     @post.update(status: "found")
     users = TrackedPost.where(post: @post).map(&:user).push(@post.user)
     users.each do |user|
       PostMailer.with(
         user: user,
         post: @post,
-        message: @message
+        message: @message,
+        youtube_link: youtube_link
       ).post_found.deliver_now
     end
   end
