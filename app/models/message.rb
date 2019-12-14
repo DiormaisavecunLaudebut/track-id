@@ -12,13 +12,15 @@ class Message < ApplicationRecord
       Ex: I think this is /Cory Henry, Trade It All/" }
 
   def scrap_youtube
-    els = scrap_youtube_elements(body)
+    els = scrap_youtube_elements(user_guess)
     titles, views, links = els[:titles], els[:views], els[:links]
 
     global_score = word_and_place_score(titles, body)
     view_score = view_score(views)
+    puts "LINKS ==> #{links}\n"
+    puts "GLOBAL SCORE ==> #{global_score}\n"
+    puts "VIEW_SCORE ==> #{view_score}\n"
     best = calculate_final_score(global_score, view_score)
-
     return "https://www.youtube.com#{links[best]}"
   end
 
@@ -81,6 +83,7 @@ class Message < ApplicationRecord
       z += 1
       view_score[z].nil? ? score : score + view_score[z]
     end
+    puts "FINAL ==> #{final}\n"
     final.index(final.max)
   end
 
@@ -98,6 +101,7 @@ class Message < ApplicationRecord
     n = 11
     titles.map do |title|
       i = 0
+      n -= 1
       body.each { |word| i += 2 if title.downcase.match?(word) }
       n > 0 ? i + n : i
     end
