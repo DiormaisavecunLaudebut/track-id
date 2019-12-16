@@ -4,10 +4,10 @@
   This is <%= @message.user_guess %>
   <br>
   <br>
-  <a href=" <%= @youtube_link %> ">View it on Youtube</a>
+  <a href=" <%= @post.youtube_link %> ">View it on Youtube</a>
   <br>
-  <% if @spotify_link %>
-    <a href=" <%= @spotify_link %> ">Open in Spotify</a>
+  <% if @post.spotify_link %>
+    <a href=" <%= @post.spotify_link %> ">Open in Spotify</a>
   <% else %>
     <p>Sorry but we didn't find this track on Spotify :(</p>
   <% end %>

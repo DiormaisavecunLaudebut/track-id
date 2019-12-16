@@ -32,6 +32,7 @@ class YoutubeScrapper < ApplicationRecord
     url = base + text.gsub(' ', '+')
     html_doc = Nokogiri::HTML(open(url).read)
     youtube_correction = html_doc.search('a.spell-correction-corrected-query')
+    self.corrected_guess = text.gsub(' ', '+')
     return html_doc unless youtube_correction
 
     corrected_query = youtube_correction[0].attributes["href"].to_s
