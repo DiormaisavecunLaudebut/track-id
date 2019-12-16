@@ -14,7 +14,7 @@ if test == false
   seed_database
 else
   RSpotify.authenticate(ENV["SPOTIFY_CLIENT"], ENV["SPOTIFY_SECRET"])
-  tracks = RSpotify::Base.search('cory henry trade it all', 'track')
+  tracks = RSpotify::Base.search('cory hery trade it all', 'track')
   print tracks
 end
 

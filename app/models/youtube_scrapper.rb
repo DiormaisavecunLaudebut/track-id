@@ -12,11 +12,9 @@ class YoutubeScrapper < ApplicationRecord
   private
 
   def scrap_youtube_elements(text)
-    base = "https://www.youtube.com/results?search_query="
     links = []
     titles = []
-    url = base + text.gsub(' ', '+')
-    html_doc = Nokogiri::HTML(open(url).read)
+    html_doc = find_html_doc(text)
 
     html_doc.search('h3 a').each do |element|
       titles << element.attributes["title"].to_s
@@ -27,6 +25,20 @@ class YoutubeScrapper < ApplicationRecord
       element.inner_html.match?('vues')
     end
     return { links: links, titles: titles, views: views }
+  end
+
+  def find_html_doc(text)
+    base = "https://www.youtube.com/results?search_query="
+    url = base + text.gsub(' ', '+')
+    html_doc = Nokogiri::HTML(open(url).read)
+    youtube_correction = html_doc.search('a.spell-correction-corrected-query')
+    return html_doc unless youtube_correction
+
+    corrected_query = youtube_correction[0].attributes["href"].to_s
+    url = "https://www.youtube.com" + corrected_query
+    corrected_guess = corrected_query.match(/query=(.*)/)[1].gsub('+', ' ')
+    self.corrected_guess = corrected_guess
+    html_doc = Nokogiri::HTML(open(url).read)
   end
 
   def view_score(views)

@@ -4,8 +4,12 @@ class FoundTrackJob < ApplicationJob
   def perform(message_id)
     message = Message.find(message_id)
     post = message.post
-    youtube_link = YoutubeScrapper.new.find_link(message)
-    spotify_link = SpotifyRequest.new.find_link(message)
+
+    youtube_scrapper = YoutubeScrapper.new
+    youtube_link = youtube_scrapper.find_link(message)
+    new_guess = youtube_scrapper.corrected_guess if youtube_scrapper.corrected_guess
+
+    spotify_link = SpotifyRequest.new.find_link(new_guess)
     users = TrackedPost.where(post: post).map(&:user).push(post.user)
 
     users.each do |user|

@@ -23,5 +23,4 @@ class Message < ApplicationRecord
   def after_guess
     body.split(/\/.*\//)[1]
   end
-
 end
