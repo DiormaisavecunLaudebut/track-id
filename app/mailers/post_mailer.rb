@@ -8,6 +8,7 @@ class PostMailer < ApplicationMailer
     @message = params[:message]
     @post = @message.post
     @youtube_link = params[:youtube_link]
+    @spotify_link = params[:spotify_link]
 
     mail(
       to:       @user.email,

@@ -2,7 +2,7 @@ var regex = /\/(.*)\//
 
 function enablePost(e) {
   const submit = e.currentTarget.parentElement.nextElementSibling;
-  const subtmiCache = e.currentTarget.nextElementSibling;
+  const submitCache = document.querySelector('.submit-cache');
   if (e.currentTarget.value.match(regex)) {
     submit.style.opacity = "1"
     submit.disabled = false
@@ -16,9 +16,13 @@ function enablePost(e) {
 
 function displayErrorMessage(e) {
   const alert = document.querySelector('.alert-info');
-  if (!e.currentTarget.previousElementSibling.value.match(regex) && !alert) {
+  const input = e.currentTarget.previousElementSibling
+  if (!input.value.match(regex) && !alert) {
     const body = document.querySelector('body');
     body.insertAdjacentHTML('beforeend', `<%= render 'shared/flash-message-format' %>`)
+  } else if (input.value.match(regex)) {
+    e.currentTarget.style.zIndex = "-1";
+    alert.remove();
   }
 }
 

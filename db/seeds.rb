@@ -7,13 +7,15 @@ ending = ["?", ".", "!", "!!", "!!!", "?", "", "", ""]
 url = "https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png"
 # replace url by this line if you a random avatar pic, and not the same again and again
 # url = "https://i.pravatar.cc/300"
-test = false
+test = true
 
 if test == false
   clear_database
   seed_database
 else
-  # DO SOME STUFF
+  RSpotify.authenticate(ENV["SPOTIFY_CLIENT"], ENV["SPOTIFY_SECRET"])
+  tracks = RSpotify::Base.search('cory henry trade it all', 'track')
+  print tracks
 end
 
 def clear_database

@@ -3,6 +3,15 @@
 <p>
   This is <%= @message.user_guess %>
   <br>
+  <br>
   <a href=" <%= @youtube_link %> ">View it on Youtube</a>
-  You'll soon have a spotify and soundcloud link 😉
+  <br>
+  <% if @spotify_link %>
+    <a href=" <%= @spotify_link %> ">Open in Spotify</a>
+  <% else %>
+    <p>Sorry but we didn't find this track on Spotify :(</p>
+  <% end %>
+  <br>
+  <br>
+  <p>Enjoy ! 🎶</p>
 </p>
