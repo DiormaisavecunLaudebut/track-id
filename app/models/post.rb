@@ -13,10 +13,10 @@ class Post < ApplicationRecord
   # }
 
   def viewed_by?(user)
-    user ? views.map(&:user).include?(user) : nil
+    !views.find { |i| i.user == user }.nil?
   end
 
   def tracked_by?(user)
-    user ? tracked_posts.map(&:user).include?(user) : nil
+    !tracked_posts.find { |i| i.user == user }.nil?
   end
 end

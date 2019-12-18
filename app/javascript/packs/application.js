@@ -17,14 +17,22 @@ manageRecording();
 setInterval(moveWaves, 20);
 
 
-// import cloudinary from "cloudinary-core";
+import cloudinary from "cloudinary-core";
 
-// const cloudName = 'dlodtvkez';
-// const unsignedUploadPreset = 'z3lte9fj';
+const cloudName = 'dlodtvkez';
+const unsignedUploadPreset = 'z3lte9fj';
 
-// const callback = (error, result) => {
-//   console.log(result, error);
-// }
+const callback = (error, result) => {
+  console.log(result, error);
+}
+console.log(cloudinary)
+console.log(cloudinary.unsigned_upload)
+
+// cloudinary.v2.uploader.unsigned_upload(file,
+//   unsignedUploadPreset,
+//   {resource_type: "video"},
+//   callback);
+
 
 
 

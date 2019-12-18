@@ -16,8 +16,8 @@ Rails.application.routes.draw do
     post 'create_view', to: 'posts#create_view', as: :create_view
     delete 'unupvote', to: 'posts#unupvote', as: :unupvote
     resources :messages, only: [:create] do
-      post 'upvote', to: 'posts#upvote', as: :upvote
-      delete 'unupvote', to: 'posts#unupvote', as: :unupvote
+      post 'upvote', to: 'messages#upvote', as: :upvote
+      delete 'unupvote', to: 'messages#unupvote', as: :unupvote
     end
   end
 
