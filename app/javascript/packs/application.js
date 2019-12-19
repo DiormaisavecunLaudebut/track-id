@@ -26,88 +26,9 @@ const callback = (error, result) => {
   console.log(result, error);
 }
 console.log(cloudinary)
-console.log(cloudinary.unsigned_upload)
 
 // cloudinary.v2.uploader.unsigned_upload(file,
 //   unsignedUploadPreset,
 //   {resource_type: "video"},
 //   callback);
-
-
-
-
-// navigator.mediaDevices.getUserMedia({ audio: true })
-//   .then(stream => {
-//     const mediaRecorder = new MediaRecorder(stream);
-//     mediaRecorder.start();
-
-//     const audioChunks = [];
-//     mediaRecorder.addEventListener("dataavailable", event => {
-//       audioChunks.push(event.data);
-//     });
-
-//     mediaRecorder.addEventListener("stop", () => {
-//       const audioBlob = new Blob(audioChunks);
-//       const audioUrl = URL.createObjectURL(audioBlob);
-//       const audio = new Audio(audioUrl);
-//     });
-
-//     setTimeout(() => {
-//       mediaRecorder.stop();
-//       console.log(cloudinary)
-//       console.log(cloudinary.v2)
-//       cloudinary.v2.uploader.unsigned_upload(audio,
-//         unsignedUploadPreset,
-//         {resource_type: "video"},
-//         callback);
-//     }, 3000);
-//   });
-
-
-// const constraints = {audio: true}
-// const homeScreen = document.querySelector('.home-center');
-
-// const homeScreen = document.querySelector('.home-center');
-// URL = window.URL || window.webkitURL;
-// let gumStream;
-// let rec;
-// let input;
-// let AudioContext = window.AudioContext || window.webkitAudioContext;
-// let audioContext = new AudioContext;
-
-
-// function createDownloadLink(blob) {
-//     let url = URL.createObjectURL(blob);
-// }
-
-// function stopRecording() {
-//     console.log("stopButton clicked");
-//     rec.stop(); //stop microphone access
-//     gumStream.getAudioTracks()[0].stop();
-//     rec.exportWAV(uploadToCloudinary);
-// }
-
-// const startRecording = () => {
-//   let constraints = { audio: true };
-//   navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
-//     gumStream = stream;
-//     input = audioContext.createMediaStreamSource(stream);
-//     rec = new Recorder(input, { numChannels: 1 })
-//     rec.record()
-//     console.log("Recording started");
-//     setTImeout(stopRecording, 5000)
-// }).catch(function(err) {
-// });
-// }
-
-// homeScreen.addEventListener('click', startRecording);
-
-
-
-
-
-
-
-
-
 
