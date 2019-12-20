@@ -15968,6 +15968,8 @@ function recordAudio(recorder) {
 
 function uploadFile(file) {
   console.log(file)
+  console.log("<%= @cloudinary %>")
+
 }
 
 function stopRecordingAudio(recorder) {
@@ -15995,6 +15997,5 @@ var rec = new MicRecorder
 
 recordAudio(rec);
 setTimeout(function() {stopRecordingAudio(rec)}, 5000);
-
 
 

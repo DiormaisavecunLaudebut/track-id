@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show actions create]
-  before_action :find_post, except: %i[index post_found? create]
+  skip_before_action :authenticate_user!, only: %i[index show actions]
+  before_action :find_post, except: %i[index post_found? create new]
   after_action :post_found?, only: :upvote
 
   def index
@@ -8,6 +8,14 @@ class PostsController < ApplicationController
   end
 
   def create
+    @public_id = "audio" + (Post.last.id + 1).to_s + current_user.id.to_s
+    respond_to do |format|
+      format.html { redirect_to tracks_path }
+      format.js
+    end
+  end
+
+  def new
     respond_to do |format|
       format.html { redirect_to tracks_path }
       format.js
