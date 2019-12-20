@@ -1,0 +1,30 @@
+<div class="user-background-img"></div>
+<div class="avatar user-avatar"></div>
+
+<div class="user-card-container">
+
+  <h3><%= @user.username.upcase %></h3>
+
+  <% if @user.description %>
+    <p class="user-description"><%= @user.description %></p>
+  <% else %>
+    <p class="user-description">add a description</p>
+  <% end %>
+
+  <div class="d-flex">
+    <div class="follow-info">
+      <p><%= @user.followers.count %> <span>followers</span></p>
+    </div>
+    <div class="ml-3 follow-info">
+      <p><%= @user.following.count %> <span>following</span></p>
+    </div>
+  </div>
+
+  <% if current_user.nil? %>
+  <% elsif current_user.following?(@user) %>
+    <%= render 'unfollow', user: user %>
+  <% else %>
+    <%= render 'follow', user: user %>
+  <% end %>
+  <div class="follow-submit-click"></div>
+</div>

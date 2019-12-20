@@ -29,7 +29,7 @@
   </div>
   <%= link_to user_dashboard_path(post.user) do %>
     <div class="post-action action-item">
-      <i class="far fa-user"></i>
+      <%= cl_image_tag 'avatar-empty', width: 19, height: 22 %>
       <p>See user profil</p>
     </div>
   <% end %>

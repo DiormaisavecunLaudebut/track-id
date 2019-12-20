@@ -3,13 +3,17 @@ import { moveWaves } from '../components/sound-wave';
 import { playExtract } from '../components/play-extract';
 import { displayPostViews } from '../components/display-post-views';
 import { observeDOM } from '../components/post-show-style';
-
+import { submitFollowRequest } from '../components/follow';
+import { setUserDescriptionWidth } from '../components/user-description';
 import { manageRecording } from '../components/record-audio';
+
 
 const posts = document.querySelectorAll('.play-click');
 const conversations = document.querySelectorAll('.comments-click');
 
-displayPostViews()
+displayPostViews();
+setUserDescriptionWidth()
+submitFollowRequest();
 posts.forEach(post => post.addEventListener('click', playExtract))
 conversations.forEach(conv => conv.addEventListener('click', openConversation))
 observeDOM();
