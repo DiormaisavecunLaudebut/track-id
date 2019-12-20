@@ -1,0 +1,18 @@
+<div class="user-background-img"></div>
+<div class="avatar user-avatar"></div>
+<div class="user-card-container">
+  <h3><%= @user.username.upcase %></h3>
+
+  <% if @user.description %>
+    <p><%= @user.description %></p>
+  <% else %>
+    <p>add a description</p>
+  <% end %>
+
+  <% if current_user.following?(@user) %>
+    <%= render 'unfollow', user: @user %>
+  <% else %>
+    <%= render 'follow', user: @user %>
+  <% end %>
+
+</div>

@@ -27,11 +27,12 @@
     <%= cl_image_tag 'share', width: 22, height: 30 %>
     <p>Share</p>
   </div>
-
-  <div class="post-action action-item">
-    <i class="far fa-user"></i>
-    <p>See user profil</p>
-  </div>
+  <%= link_to user_dashboard_path(post.user) do %>
+    <div class="post-action action-item">
+      <i class="far fa-user"></i>
+      <p>See user profil</p>
+    </div>
+  <% end %>
 
   <div class="post-action-cancel action-item">
     <p>Cancel</p>

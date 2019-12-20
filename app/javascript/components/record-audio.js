@@ -4,7 +4,6 @@ import { recordAudio, stopRecordingAudio } from './audio-recorder';
 const homeScreen = document.querySelector('.home-center');
 const shazamLogo = document.getElementById('shazam-main-icon');
 const MicRecorder = require('mic-recorder-to-mp3');
-console.log(MicRecorder)
 const rec = new MicRecorder({bitRate: 128});
 
 const stopRecording = (rec) => {

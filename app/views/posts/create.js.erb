@@ -15967,9 +15967,18 @@ function recordAudio(recorder) {
 }
 
 function uploadFile(file) {
-  console.log(file)
-  console.log("<%= @cloudinary %>")
-
+  const cloudName = 'dlodtvkez';
+  const url = `https://api.cloudinary.com/v1_1/${cloudName}/video/upload`
+  fetch(url, {
+    method: "POST",
+    upload_preset: 'z3lte9fj',
+    file: file,
+    options: {public_id: "<%= @public_id %>"}
+  })
+  .then(function(response) { response.json() })
+  .then(function(data) {
+    // doesn't work
+  })
 }
 
 function stopRecordingAudio(recorder) {
@@ -15985,7 +15994,7 @@ function stopRecordingAudio(recorder) {
 
     const player = new Audio(URL.createObjectURL(file));
     // player.play();
-    uploadFile(file)
+    // uploadFile(file)
 
   }).catch((e) => {
     alert('We could not retrieve your message');

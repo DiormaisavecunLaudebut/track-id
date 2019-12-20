@@ -1,0 +1,4 @@
+console.log('creating new relationship')
+var creationForm = document.querySelector('.new_relationship');
+creationForm.outerHTML = `<%= render 'users/follow', user: @user %>`
+

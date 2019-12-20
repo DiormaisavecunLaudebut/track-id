@@ -4,7 +4,6 @@ const banner = document.querySelector('.home-banner');
 const homeScreen = document.querySelector('.home-center');
 const photoIcon = document.querySelector('.photo-icon');
 const body = document.querySelector('body');
-const text = homeScreen.firstElementChild;
 
 const startPulseAnimation = () => {
   let i = 1
@@ -27,6 +26,7 @@ const stopPulseAnimation = () => {
 }
 
 const setListeningStyle = () => {
+  const text = homeScreen.firstElementChild;
   body.style.position = "fixed";
   body.style.width = "100%";
   banner.style.transform = "translate(0, -78px)";
@@ -36,6 +36,7 @@ const setListeningStyle = () => {
 }
 
 const removeListeningStyle = () => {
+  const text = homeScreen.firstElementChild;
   banner.style.transform = "translate(0, -0)";
   homeScreen.style.transform = "translate(0, 0)";
   photoIcon.style.opacity = "1";

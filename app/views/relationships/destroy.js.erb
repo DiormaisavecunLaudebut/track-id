@@ -1,0 +1,3 @@
+console.log('destroying relationship')
+var editingForm = document.querySelector('.edit_relationship');
+editingForm.outerHTML = `<%= render 'users/unfollow', user: @user %>`

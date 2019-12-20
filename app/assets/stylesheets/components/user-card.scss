@@ -1,0 +1,21 @@
+.user-background-img {
+  width: 100%;
+  height: 100px;
+  background-image: url('https://www.sortiraparis.com/images/80/77153/487873-panorama-du-cinema-colombien-2019-au-reflet-medicis-2.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.user-avatar {
+  position: absolute;
+  top: 70px;
+  left: 24px;
+}
+
+.user-card-container {
+  padding-left: 24px;
+  padding-right: 24px;
+  width: 100%;
+  background: white;
+  padding-top: 50px;
+}
