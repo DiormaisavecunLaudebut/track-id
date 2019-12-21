@@ -1,3 +1,5 @@
+var audio
+const baseURL = "https://res.cloudinary.com/dlodtvkez/video/upload/v1576957681/"
 const extract_playing = `
 <div>
   <i class="fab fa-itunes-note notes-extract"></i>
@@ -13,6 +15,14 @@ return `
   </div>`
 }
 
+const fetchAudio = (post) => {
+  const audioID = "audio_" + post.dataset.postId + '_' + post.dataset.postUser + ".mp3"
+  const url = baseURL + audioID
+  const audio = document.createElement('audio')
+  audio.src = url
+  return audio
+}
+
 const resetOnPlay = (parent) => {
   const posts = Array.from(document.querySelectorAll('.post-item'));
   posts.filter(el => el != parent).forEach((post) => {
@@ -24,11 +34,18 @@ const resetOnPlay = (parent) => {
 
 const playExtract = (e) => {
   const parent = e.currentTarget.parentElement.parentElement;
-  resetOnPlay(parent);
   const playView = parent.querySelector('.play-view');
+  resetOnPlay(parent);
   const views = parent.dataset.postViews;
   parent.classList.toggle('playing');
-  playView.innerHTML = playView.innerHTML == extract_playing ? extract_pause(views) : extract_playing
+  if (playView.innerHTML == extract_playing) {
+    playView.innerHTML = extract_pause(views);
+    audio.pause();
+  } else {
+    audio = fetchAudio(parent);
+    audio.play();
+    playView.innerHTML = extract_playing;
+  }
 }
 
 export { playExtract }
