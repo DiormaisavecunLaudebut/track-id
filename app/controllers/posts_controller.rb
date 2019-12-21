@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show actions]
-  before_action :find_post, except: %i[index post_found? create new delete_audio]
+  before_action :find_post, except: %i[index create new delete_audio]
 
   def index
     @posts = Post.where(status: nil)
@@ -20,13 +20,6 @@ class PostsController < ApplicationController
       audio: @public_id
     )
     @public_id = ["audio", post.id, current_user.id].join('_')
-    respond_to do |format|
-      format.html { redirect_to tracks_path }
-      format.js
-    end
-  end
-
-  def delete_audio
     respond_to do |format|
       format.html { redirect_to tracks_path }
       format.js

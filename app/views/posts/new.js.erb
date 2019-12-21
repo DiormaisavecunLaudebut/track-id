@@ -15958,13 +15958,16 @@ return MicRecorder;
 })));
 //# sourceMappingURL=index.js.map
 
-var rec = new MicRecorder
 var body = document.querySelector('body');
 var link = document.getElementById('start-recording');
+var rec = new MicRecorder
 
 function recordAudio(recorder) {
   recorder.start().then(() => {
     link.href = ""
+    body.addEventListener('click', function(event) {
+      rec.stop();
+    })
   }).catch((e) => {
     console.error(e);
   });
@@ -15973,7 +15976,7 @@ function recordAudio(recorder) {
 function appendNoResultPage() {
   const noResult = `<%= render 'no-result' %>`
   document.querySelector('.home-page').remove();
-  document.querySelector('body').insertAdjacentHTML('afterbegin', noResult)
+  body.insertAdjacentHTML('afterbegin', noResult)
 }
 
 function storeFileInHTML(file) {
@@ -16000,16 +16003,11 @@ function stopRecordingAudio(recorder) {
 }
 
 function manageRecording() {
+  console.log('hey')
   recordAudio(rec);
-  body.addEventListener('click', function(event) {
-    rec.stop()
-    link.href = "/posts/new"
-  })
   setTimeout(function() {
     console.log(rec.context.state)
-    if (rec.context.state == "running") {
-      stopRecordingAudio(rec)
-    }
+    rec.context.state == "running" ? stopRecordingAudio(rec) : link.href = "/posts/new"
   }, 3000)
 }
 
