@@ -9,17 +9,30 @@ function redirectToHome() {
   link.click();
 }
 
-function uploadFile() {
-  const audio = document.getElementById('audio-container').firstElementChild;
+function uploadFile(file) {
+  const cloudName = 'dlodtvkez';
+  const url = `https://api.cloudinary.com/v1_1/${cloudName}/video/upload`
+  var data = new FormData();
+  data.append('upload_preset', 'z3lte9fj');
+  data.append('file', file)
+  data.append('public_id', "<%= @public_id %>")
+  fetch(url, { method: "POST", body: data })
+  .then(function(response) { return response.json() })
+  .then(function(data) { console.log(data) })
+}
+
+function getAudioFile() {
+  const audio = document.querySelector('#audio-container audio')
   fetch(audio.src)
   .then(function(response) { return response.blob() })
-  .then(function(data) {
-    buffer = JSON.parse(localStorage.getItem('buffer'))
-    const file = new File(buffer, 'me-at-thevoice.mp3', {
-      type: data.type,
+  .then(function(blob) {
+    storedItem = JSON.parse(localStorage.getItem('buffer'));
+    const buffer = storedItem.map(function(e) { return Int8Array.from(Object.values(e)) })
+    const file = new File(buffer, 'lior_jadore.mp3', {
+      type: blob.type,
       lastModified: Date.now()
     });
-    console.log(file)
+    uploadFile(file)
   })
 }
 
@@ -28,9 +41,8 @@ function messagePosted() {
   title.innerText = "Message Posted.";
   text.innerText = "We'll get back to you soon";
   createBtn.remove();
-  uploadFile();
-  setTimeout(redirectToHome, 20000);
+  getAudioFile();
+  setTimeout(redirectToHome, 2000);
 }
-
 
 messagePosted();

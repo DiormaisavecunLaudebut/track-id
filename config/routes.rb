@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       get         'discover',    to:     'pages#discover',     as: :discover
       get         'nothing',     to:     'pages#nothing',      as: :nothing
       get         'tracks',      to:     'posts#index',        as: :tracks
-      get         'delete_audio',to:     'posts#delete_audio', as: :delete_audio
+
   resources :posts, only: [:new, :create] do
       post       'tracked',      to:     'posts#tracked',      as: :tracked
       delete     'untracked',    to:     'posts#untracked',    as: :untracked

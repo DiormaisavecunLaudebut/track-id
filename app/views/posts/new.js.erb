@@ -15958,32 +15958,16 @@ return MicRecorder;
 })));
 //# sourceMappingURL=index.js.map
 
+var rec = new MicRecorder
+var body = document.querySelector('body');
+var link = document.getElementById('start-recording');
+
 function recordAudio(recorder) {
   recorder.start().then(() => {
-    // something else
+    link.href = ""
   }).catch((e) => {
     console.error(e);
   });
-}
-
-function uploadFile(file) {
-  console.log(file)
-  const cloudName = 'dlodtvkez';
-  const url = `https://api.cloudinary.com/v1_1/${cloudName}/video/upload`
-  var data = new FormData();
-  data.append('upload_preset', 'z3lte9fj');
-  data.append('file', file)
-  data.append('public_id', "<%= @public_id %>")
-  console.log("<%= @public_id %>")
-  fetch(url, {
-    method: "POST",
-    body: data
-  })
-  .then(function(response) { response.json() })
-  .then(function(data) {
-    console.log(data)
-    // doesn't work
-  })
 }
 
 function appendNoResultPage() {
@@ -15992,33 +15976,44 @@ function appendNoResultPage() {
   document.querySelector('body').insertAdjacentHTML('afterbegin', noResult)
 }
 
+function storeFileInHTML(file) {
+  const player = new Audio(URL.createObjectURL(file));
+  document.querySelector('body').insertAdjacentHTML('beforeend', `<div id="audio-container"></div>`)
+  document.getElementById('audio-container').appendChild(player)
+}
+
 function stopRecordingAudio(recorder) {
   recorder
   .stop()
   .getMp3().then(([buffer, blob]) => {
-    // do what ever you want with buffer and blob
-    // Example: Create a mp3 file and play
-    const file = new File(buffer, 'me-at-thevoice.mp3', {
+    localStorage.setItem('buffer', JSON.stringify(buffer))
+    const file = new File(buffer, 'lior_jadore.mp3', {
       type: blob.type,
       lastModified: Date.now()
     });
-    console.log(buffer)
-    localStorage.setItem('buffer', JSON.stringify(buffer))
-    const player = new Audio(URL.createObjectURL(file));
-    document.querySelector('body').insertAdjacentHTML('beforeend', `<div id="audio-container"></div>`)
-    document.getElementById('audio-container').appendChild(player)
-    // uploadFile(file)
+    storeFileInHTML(file)
     appendNoResultPage();
-
   }).catch((e) => {
     console.log(e)
     alert('Something went wrong');
   });
 }
 
-var rec = new MicRecorder
+function manageRecording() {
+  recordAudio(rec);
+  body.addEventListener('click', function(event) {
+    rec.stop()
+    link.href = "/posts/new"
+  })
+  setTimeout(function() {
+    console.log(rec.context.state)
+    if (rec.context.state == "running") {
+      stopRecordingAudio(rec)
+    }
+  }, 3000)
+}
 
-recordAudio(rec);
-setTimeout(function() {stopRecordingAudio(rec)}, 3000);
+manageRecording();
+
 
 

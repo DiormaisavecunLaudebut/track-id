@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :find_post
+  after_action :post_found?, only: :upvote
   before_action :find_message, only: %i[upvote unupvote]
 
   def create
@@ -44,5 +45,12 @@ class MessagesController < ApplicationController
 
   def find_message
     @message = Message.find(params[:message_id].to_i)
+  end
+
+  def post_found?
+    return unless @message.upvotes.count >= 100
+
+    @post.update(status: "found")
+    FoundTrackJob.perform_later(@message.id)
   end
 end
