@@ -1,0 +1,13 @@
+<div class="no-result-page">
+  <%= link_to delete_audio_path, remote: :true do  %>
+    <%= cl_image_tag 'cross', width: 24, height: 24, class: 'cross' %>
+  <% end %>
+  <div class="no-result">
+    <%= cl_image_tag 'no-result', width: 80, height: 80 %>
+    <h1>No Result.</h1>
+    <p>We didn't quite catch that</p>
+    <a data-remote="true" id="btn-submit-post" href="/posts" data-method="post" rel="nofollow">
+      <h6>ASK THE COMMUNITY</h6>
+    </a>
+  </div>
+</div>
