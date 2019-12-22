@@ -4,12 +4,8 @@
 <div class="user-card-container">
 
   <h3><%= @user.username.upcase %></h3>
+  <p class="user-description"><%= user_description(@user) %></p>
 
-  <% if @user.description %>
-    <p class="user-description"><%= @user.description %></p>
-  <% else %>
-    <p class="user-description">add a description</p>
-  <% end %>
 
   <div class="d-flex">
     <div class="follow-info">

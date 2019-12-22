@@ -1,8 +1,15 @@
-<%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
-  <div><%= hidden_field_tag :followed_id, user.id %></div>
-  <%= f.submit "", class: "follow-submit" %>
-  <div class="follow-submit-img">
+<% if current_user.nil? %>
+  <div style="top:130px;right:30px;" class="follow-submit-img">
     <%= cl_image_tag 'avatar-follow', width: 22, height: 20 %>
     <span>follow</span>
   </div>
+<% else %>
+  <%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
+    <div><%= hidden_field_tag :followed_id, user.id %></div>
+    <%= f.submit "", class: "follow-submit" %>
+    <div class="follow-submit-img">
+      <%= cl_image_tag 'avatar-follow', width: 22, height: 20 %>
+      <span>follow</span>
+    </div>
+  <% end %>
 <% end %>
