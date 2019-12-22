@@ -1,7 +1,7 @@
 <div class="d-flex post-item px-3"
-    data-post-views="<%= post.views.count %>"
-    data-post-user="<%= post.user.id %>"
-    data-post-id="<%= post.id %>">
+data-post-views="<%= post.views.count %>"
+data-post-user="<%= post.user.id %>"
+data-post-id="<%= post.id %>">
   <%= link_to post_create_view_path(post), remote: true, method: :post do %>
     <div class="play-click"></div>
   <% end %>

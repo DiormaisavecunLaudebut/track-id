@@ -1,4 +1,4 @@
-let audio
+let post
 const baseURL = "https://res.cloudinary.com/dlodtvkez/video/upload/v1576957681/"
 const errURL = "https://res.cloudinary.com/dlodtvkez/video/upload/v1576961956/lior_jadore.mp3"
 const extract_playing = `
@@ -51,4 +51,4 @@ const playExtract = (e) => {
   }
 }
 
-export { playExtract }
+export { playExtract, fetchAudio }

@@ -1,5 +1,8 @@
 <div class='post-comments'>
-  <div class="d-flex post-item px-3 mb-3" data-post-views="<%= post.views.count %>" data-post-id="<%= post.id %>">
+  <div class="d-flex post-item px-3 mb-3"
+  data-post-views="<%= post.views.count %>"
+  data-post-user="<%= post.user.id %>"
+  data-post-id="<%= post.id %>">
     <div class="avatar"></div>
     <div class="post-item-details">
       <div class="post-username"><%= post.user.username %></div>

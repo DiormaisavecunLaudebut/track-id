@@ -1,3 +1,5 @@
+import { fetchAudio } from './play-extract'
+
 const config = { attributes: true, childList: true, subtree: true }
 
 const setMessagesMaxWidth = ()  => {
@@ -43,11 +45,16 @@ const closePostShow = (filter, nodes, postItem) => {
   })
 )}
 
+const playExtract = () => {
+  // TO DO
+}
+
 const styleThisShit = (nodes) => {
-  //console.log(nodes)
   const filter = nodes.find(e => e.classList.value.match('opacity-filter'));
   const conv = nodes.find(e => e.classList.value.match('post-comments'));
   const postItem = nodes[0].previousElementSibling
+  const playRound = conv.querySelector('.play-round')
+  playRound.addEventListener('click', playExtract )
   setStyle(filter, conv, postItem);
   setMessagesMaxWidth();
   closePostShow(filter, nodes, postItem);

@@ -12,10 +12,10 @@ const posts = document.querySelectorAll('.play-click');
 const conversations = document.querySelectorAll('.comments-click');
 
 displayPostViews();
-setUserDescriptionWidth()
+setUserDescriptionWidth();
 submitFollowRequest();
-posts.forEach(post => post.addEventListener('click', playExtract))
-conversations.forEach(conv => conv.addEventListener('click', openConversation))
+posts.forEach(post => post.addEventListener('click', playExtract));
+conversations.forEach(conv => conv.addEventListener('click', openConversation));
 observeDOM();
 manageRecording();
 setInterval(moveWaves, 20);
