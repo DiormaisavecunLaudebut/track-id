@@ -7,7 +7,7 @@ ending = ["?", ".", "!", "!!", "!!!", "?", "", "", ""]
 url = "https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png"
 # replace url by this line if you a random avatar pic, and not the same again and again
 # url = "https://i.pravatar.cc/300"
-test = true
+test = false
 
 if test == false
   clear_database
