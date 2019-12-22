@@ -1,0 +1,15 @@
+.user-post-section {
+  background: white;
+  border-bottom: 1px solid $sgray;
+  color: #484848;
+}
+
+.empty-section {
+  height: 90px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 3rem;
+}

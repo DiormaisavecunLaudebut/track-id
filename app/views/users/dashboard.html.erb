@@ -1,1 +1,44 @@
 <%= render 'user-info', user: @user %>
+
+<div class="mt-3 py-1 pl-3 user-post-section">My Posts</div>
+<% if @my_posts.empty? %>
+  <div class="empty-section"></div>
+<% else %>
+  <% @my_posts.each do |post| %>
+    <%= render 'shared/post_item', post: post %>
+  <% end %>
+<% end %>
+
+<div class="mt-3 py-1 pl-3 user-post-section">Tracked Posts</div>
+<% if @tracked_posts.empty? %>
+  <% if @user == current_user %>
+    <%= link_to tracks_path do %>
+      <div class="empty-section">You havn't tracked any Post yet ! Let's have a look 🚀</div>
+    <% end %>
+  <% else %>
+    <%= link_to tracks_path do %>
+      <div class="empty-section"><%= "#{@user.username} hasn't tracked any Post yet... 🐢" %></div>
+    <% end %>
+  <% end %>
+<% else %>
+  <% @tracked_posts.each do |post| %>
+    <%= render 'shared/post_item', post: post %>
+  <% end %>
+<% end %>
+
+<div class="mt-3 py-1 pl-3 user-post-section">Tracks Found</div>
+<% if @tracks_found.empty? %>
+  <% if @user == current_user %>
+    <%= link_to tracks_path do %>
+      <div class="empty-section">No tracks found... I guess you're just bad 🙃</div>
+    <% end %>
+  <% else %>
+    <%= link_to tracks_path do %> <!-- NEED TO CREATE THIS ACTION-->
+      <div class="empty-section"><%= "#{@user.username} hasn't tracked found any Post yet. Maybe he can help finding yours... 🤔" %></div>
+    <% end %>
+  <% end %>
+<% else %>
+  <% @tracks_found.each do |post| %>
+    <%= render 'shared/post_item', post: post %>
+  <% end %>
+<% end %>
