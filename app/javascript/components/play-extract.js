@@ -1,3 +1,4 @@
+let audio
 let post
 const baseURL = "https://res.cloudinary.com/dlodtvkez/video/upload/v1576957681/"
 const errURL = "https://res.cloudinary.com/dlodtvkez/video/upload/v1576961956/lior_jadore.mp3"
@@ -46,7 +47,10 @@ const playExtract = (e) => {
   } else {
     audio = fetchAudio(post);
     audio.play();
-    audio.addEventListener('ended', e => playView.innerHTML = extract_pause(views))
+    audio.addEventListener('ended', e => {
+      playView.innerHTML = extract_pause(views)
+      post.classList.remove('playing')
+    })
     playView.innerHTML = extract_playing;
   }
 }
