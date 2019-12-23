@@ -1,7 +1,21 @@
+var authenticated = "<%= @authenticated %>"
+
+function redirectToSignIn() {
+  window.location.pathname = "/users/sign_in"
+}
+
+function appendAuthenticationFlash() {
+  const flash = `<%= render 'shared/flash-message-authentication' %>`
+  const body = document.querySelector('body')
+  const alert = document.querySelector('.alert-info');
+  alert ? "" : body.insertAdjacentHTML('beforeend', flash)
+  document.querySelector('.alert').addEventListener('click', redirectToSignIn)
+}
+
 function expandConversation(conv, lastMessage) {
   if (conv.childElementCount > 4) {
-    conv.style.height = `calc(${conv.offsetHeight + lastMessage.offsetHeight}px + 1.5rem)`
-    window.scroll(0, conv.offsetHeight + conv.offsetTop  - window.innerHeight + 57)
+    conv.style.height = `calc(${conv.offsetHeight + lastMessage.offsetHeight}px + 1.5rem)`;
+    window.scroll(0, conv.offsetHeight + conv.offsetTop  - window.innerHeight + 57);
   }
 }
 function styleNewMessage(previousMessage) {
@@ -10,10 +24,12 @@ function styleNewMessage(previousMessage) {
   newMessage.style.maxWidth = maxWidth + "px";
 }
 
-function appendNewMessage(message) {
+function appendNewMessage() {
+  console.log('appending new message');
+  const message = `<%= render 'shared/message', message: @message %>`;
   const postItem = document.querySelector('[data-post-id="<%= @post.id %>"]');
-  const conv = postItem.nextElementSibling
-  var lastMessage = postItem.nextElementSibling.lastElementChild
+  const conv = postItem.nextElementSibling;
+  var lastMessage = postItem.nextElementSibling.lastElementChild;
 
   lastMessage.insertAdjacentHTML('afterend', message);
   styleNewMessage(lastMessage);
@@ -22,4 +38,4 @@ function appendNewMessage(message) {
   expandConversation(conv, lastMessage);
 }
 
-appendNewMessage(`<%= render 'shared/message', message: @message %>`);
+authenticated ? appendNewMessage() : appendAuthenticationFlash()

@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   has_many :tracked_posts, dependent: :destroy
 
   validates :title, presence: true
+  validates :user, presence: true
 
   # validates :status, inclusion: {
   #   in: %w[found pending],

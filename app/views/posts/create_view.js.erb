@@ -1,9 +1,12 @@
 var post = document.querySelector('[data-post-id="<%= @post.id %>"]');
 var alreadyViewed = "<%= @already_viewed %>" == 'true'
 
-if (!alreadyViewed) {
+function addView() {
+  if (alreadyViewed) {
   var views = post.dataset.postViews;
   post.dataset.postViews = parseInt(views, 10) + 1;
   post.classList.add('view_added');
+  }
 }
 
+addView();

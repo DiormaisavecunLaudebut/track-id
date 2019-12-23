@@ -2,7 +2,7 @@
 <div class="message-item mb-4 px-3" data-message-upvotes="<%= message.upvotes.count %>" data-message-id="<%= message.id %>">
   <div class="small-avatar"></div>
   <div class="message-details ml-3">
-    <div class="message-owner"><%= message.user.username %></div>
+    <div class="message-owner"><%= message.user&.username %></div>
     <div class="message-body">
       <%= message.before_guess %>
       <span class="user-guess"> <%= message.user_guess %></span>

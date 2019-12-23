@@ -4,8 +4,6 @@ class MessagesController < ApplicationController
   before_action :find_message, only: %i[upvote unupvote]
 
   def create
-    return redirect_to new_user_registration_path unless current_user
-
     body = params["message"]["body"]
     @message = Message.create(post: @post, user: current_user, body: body)
     respond_to do |format|
@@ -16,14 +14,11 @@ class MessagesController < ApplicationController
 
   def upvote
     upvote = Upvote.new(user: current_user, message: @message)
+    upvote.save
 
-    if upvote.save
-      respond_to do |format|
-        format.html { redirect_to post_show_path(@post) }
-        format.js
-      end
-    else
-      redirect_to new_user_registration_path
+    respond_to do |format|
+      format.html { redirect_to post_show_path(@post) }
+      format.js
     end
   end
 
@@ -38,6 +33,16 @@ class MessagesController < ApplicationController
   end
 
   private
+
+  def authenticate_user!
+    @authenticated = true if current_user
+    return if current_user
+
+    respond_to do |format|
+      format.html { redirect_to new_user_session_path }
+      format.js
+    end
+  end
 
   def find_post
     @post = Post.find(params[:post_id].to_i)

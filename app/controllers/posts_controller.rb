@@ -16,10 +16,9 @@ class PostsController < ApplicationController
   def create
     post = Post.create(
       title: "Please help me find this track !",
-      user: current_user,
-      audio: @public_id
+      user: current_user
     )
-    @public_id = ["audio", post.id, current_user.id].join('_')
+    @public_id = ["audio", post.id, current_user.id].join('_') if current_user
     respond_to do |format|
       format.html { redirect_to tracks_path }
       format.js
@@ -61,14 +60,19 @@ class PostsController < ApplicationController
   def create_view
     @already_viewed = @post.viewed_by?(current_user)
     View.create(user: current_user, post: @post) unless @already_viewed
-
-    respond_to do |format|
-      format.html { redirect_to tracks_path }
-      format.js
-    end
   end
 
   private
+
+  def authenticate_user!
+    @authenticated = true if current_user
+    return if current_user
+
+    respond_to do |format|
+      format.html { redirect_to new_user_session_path }
+      format.js
+    end
+  end
 
   def find_post
     @post = Post.find(params[:post_id].to_i)

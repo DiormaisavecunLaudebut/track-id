@@ -1,13 +1,26 @@
 var message = document.querySelector('[data-message-id="<%= @message.id %>"]');
 var links = message.querySelectorAll('.upvote-link');
+var authenticated = "<%= @authenticated %>"
 
-message.querySelector('.upvotes-container').classList.remove('hide');
+function redirectToSignIn() {
+  window.location.pathname = "/users/sign_in"
+}
 
-links.forEach((link) => {
-  link.dataset.method = "delete";
-  link.href = link.href.replace('upvote', 'unupvote');
-})
+function appendAuthenticationFlash() {
+  const flash = `<%= render 'shared/flash-message-authentication' %>`
+  const body = document.querySelector('body')
+  const alert = document.querySelector('.alert-info');
+  alert ? "" : body.insertAdjacentHTML('beforeend', flash)
+  document.querySelector('.alert').addEventListener('click', redirectToSignIn)
+}
 
-message.querySelector('.upvote-count').innerHTML = "<%= @message.upvotes.count %>"
+function upvoteMessage() {
+  message.querySelector('.upvotes-container').classList.remove('hide');
+  links.forEach((link) => {
+    link.dataset.method = "delete";
+    link.href = link.href.replace('upvote', 'unupvote');
+  })
+  message.querySelector('.upvote-count').innerHTML = "<%= @message.upvotes.count %>"
+}
 
-
+authenticated ? upvoteMessage() : appendAuthenticationFlash()

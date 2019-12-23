@@ -2,16 +2,33 @@ var trackAction = document.getElementById('track-action');
 var trackImg = trackAction.querySelector('img');
 var trackText = trackAction.querySelector('p');
 var link = trackAction.parentElement;
+var authenticated = "<%= @authenticated %>"
+
+function redirectToSignIn() {
+  window.location.pathname = "/users/sign_in"
+}
+
+function appendAuthenticationFlash() {
+  const flash = `<%= render 'shared/flash-message-authentication' %>`
+  const body = document.querySelector('body')
+  const alert = document.querySelector('.alert-info');
+  alert ? "" : body.insertAdjacentHTML('beforeend', flash)
+  document.querySelector('.alert').addEventListener('click', redirectToSignIn)
+}
 
 function removeScaleAnimation() {
   trackImg.classList.remove('scale');
 }
 
-trackImg.classList.replace('filter-grey', 'filter-shazam');
-trackImg.classList.add('scale');
-setTimeout(removeScaleAnimation, 750);
+function scaleAnimation() {
+  trackImg.classList.replace('filter-grey', 'filter-shazam');
+  trackImg.classList.add('scale');
+  setTimeout(removeScaleAnimation, 750);
 
-trackText.innerHTML = 'Post tracked';
+  trackText.innerHTML = 'Post tracked';
 
-link.dataset.method = "delete";
-link.href = link.href.replace('tracked', 'untracked');
+  link.dataset.method = "delete";
+  link.href = link.href.replace('tracked', 'untracked');
+}
+
+authenticated ? scaleAnimation() : appendAuthenticationFlash()
