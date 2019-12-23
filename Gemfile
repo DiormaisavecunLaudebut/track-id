@@ -12,6 +12,7 @@ gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'open_uri_redirections'
 gem 'rspotify'
+gem 'postmark-rails'
 
 gem 'autoprefixer-rails'
 gem 'nokogiri'
