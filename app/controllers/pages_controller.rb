@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home library nothing discover]
+  skip_before_action :authenticate_user!, only: %i[home library nothing discover test]
 
   def home; end
 
@@ -8,6 +8,8 @@ class PagesController < ApplicationController
   def nothing; end
 
   def policy; end
+
+  def test; end
 
   def discover
     @discover = [

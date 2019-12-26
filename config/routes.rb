@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get         'nothing',     to:     'pages#nothing',      as: :nothing
       get         'tracks',      to:     'posts#index',        as: :tracks
       get         'policy',      to:     'pages#policy',       as: :policy
+      get         'test',        to:     'pages#test',         as: :test
   resources :posts, only: [:new, :create] do
       post       'tracked',      to:     'posts#tracked',      as: :tracked
       delete     'untracked',    to:     'posts#untracked',    as: :untracked

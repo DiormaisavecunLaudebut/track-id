@@ -1,0 +1,37 @@
+<div class="container test-container">
+  <div style="background: red;"class="test1"></div>
+  <div style="background: blue;"class="test2 mt-5"></div>
+  <div style="background: green;"class="test3 mt-5"></div>
+  <div style="background: orange;"class="test4 mt-5"></div>
+</div>
+
+<script>
+  const test1 = document.querySelector('.test1')
+  const test2 = document.querySelector('.test2')
+  const test3 = document.querySelector('.test3')
+  const test4 = document.querySelector('.test4')
+
+  const testnum1 = () => {
+    window.location.href = "http://localhost:3000/"
+  }
+
+  const testnum2 = () => {
+    window.location.replace("http://localhost:3000/")
+  }
+
+  const testnum3 = () => {
+    window.location.pathName = "/"
+  }
+
+  const testnum4 = () => {
+    link = document.createElement('a')
+    link.href = "http://localhost:3000/"
+    link.click()
+  }
+
+  test1.addEventListener('click', testnum1)
+  test2.addEventListener('click', testnum2)
+  test3.addEventListener('click', testnum3)
+  test4.addEventListener('click', testnum4)
+
+</script>

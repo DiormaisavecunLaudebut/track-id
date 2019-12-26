@@ -23,6 +23,10 @@ View.destroy_all
   )
   # user.remote_photo_url = url
   user.save!
+  i.times do
+    other_user = User.all.sample
+    user.follow(other_user) unless user.following?(other_user)
+  end
   post = Post.create(
     title: "Please help me find this track !",
     user: user
