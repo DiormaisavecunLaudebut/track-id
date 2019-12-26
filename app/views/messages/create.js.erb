@@ -1,7 +1,11 @@
 var authenticated = "<%= @authenticated %>"
 
 function redirectToSignIn() {
-  window.location.pathname = "/users/sign_in"
+  if (window.location.match('localhost') {
+    window.location.href = 'http://localhost:300/users/sign_in'
+  }) else {
+    window.location.href = 'https://www.shazamtrackid.com/users/sign_in'
+  }
 }
 
 function appendAuthenticationFlash() {
