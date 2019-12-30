@@ -5,17 +5,17 @@ var createBtn = document.querySelector('.no-result a')
 var authenticated = "<%= @authenticated %>"
 
 function redirectToSignIn() {
-  if (window.location.href.match('localhost') {
+  if (window.location.href.match('localhost')) {
     window.location.href = 'http://localhost:300/users/sign_in'
-  }) else {
+  } else {
     window.location.href = 'https://www.shazamtrackid.com/users/sign_in'
   }
 }
 
 function redirectToHome() {
-  if (window.location.href.match('localhost') {
+  if (window.location.href.match('localhost')) {
     window.location.href = 'http://localhost:300/'
-  }) else {
+  } else {
     window.location.href = 'https://www.shazamtrackid.com/'
   }
 }
