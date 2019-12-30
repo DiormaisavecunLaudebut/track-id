@@ -98,7 +98,7 @@ const callback = function(mutationsList, observer) {
   for(let mutation of mutationsList) {
     if (mutation.addedNodes.length > 3) {
       const nodes = Array.from(mutation.addedNodes).filter(e => e.nodeType == 1)
-      console.log(nodes)
+      // console.log(nodes)
       if (nodes.find(e => e.classList.value == "post-comments")) {
         styleThisShit(nodes)
       }
