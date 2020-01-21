@@ -15917,11 +15917,14 @@ var MicRecorder = function () {
       this.config.sampleRate = this.context.sampleRate;
       this.lameEncoder = new Encoder(this.config);
 
+      var constraints = { audio: true, video: false }
+
+      // lior changes
       var audio = { deviceId: { exact: this.config.deviceId } };
 
       return new Promise(function (resolve, reject) {
         console.log(navigator.mediaDevices)
-        navigator.mediaDevices.getUserMedia({ audio: audio }).then(function (stream) {
+        navigator.mediaDevices.getUserMedia({ audio: constraints }).then(function (stream) {
           _this2.addMicrophoneListener(stream);
           resolve(stream);
         }).catch(function (err) {
